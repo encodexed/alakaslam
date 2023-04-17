@@ -4,6 +4,7 @@ import ConcoctionDescription from "../ConcoctionDescription";
 import EffectsData from "../../EffectsData";
 import { useState, useEffect } from "react";
 import NoInput from "../NoInput";
+import Image from "next/image";
 
 export default function EffectsResults(props) {
 	const [potionName, setPotionName] = useState("Unnamed potion");
@@ -55,10 +56,12 @@ export default function EffectsResults(props) {
 							<div className='flex flex-col text-center'>
 								<h2 className='text-xl leading-none'>{potionName}</h2>
 								<div>
-									<img
+								<Image
 										className='mx-auto'
 										src='/images/potions/Increase_Armor.png'
 										alt='A potion!'
+										width={48}
+										height={48}
 									/>
 								</div>
 								<div className='flex flex-col text-center'>
@@ -81,10 +84,12 @@ export default function EffectsResults(props) {
 							<div className='flex flex-col text-center'>
 								<h2 className='text-xl leading-none'>{poisonName}</h2>
 								<div>
-									<img
+								<Image
 										className='mx-auto'
 										src='/images/poisons/Red_Poison.png'
 										alt='A poison!'
+										width={48}
+										height={48}
 									/>
 								</div>
 								<div className='flex flex-col text-center'>

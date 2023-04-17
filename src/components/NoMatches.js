@@ -1,5 +1,6 @@
 import CounterEffect from "./Ingredients/CounterEffect";
 import Card from "./UI/Card";
+import Image from "next/image";
 
 export default function NoMatches(props) {
 	if (!props.conflicts) {
@@ -8,10 +9,12 @@ export default function NoMatches(props) {
 				<Card>
 					<div className='flex flex-col space-y-6 leading-none text-center text-red-500'>
 						<h2 className='text-2xl'>Oops..!</h2>
-						<img
-							className='w-20 h-20 mx-auto rounded-full'
+						<Image
+							className='mx-auto rounded-full'
 							src='/images/Oopsy.png'
 							alt='Oopsy!'
+							width={48}
+							height={48}
 						/>
 						<p>
 							The ingredients will not react.
@@ -29,10 +32,12 @@ export default function NoMatches(props) {
 			<Card>
 				<div className='flex flex-col space-y-6 leading-none text-center text-red-500'>
 					<h2 className='text-2xl'>Oops..!</h2>
-					<img
-						className='w-20 h-20 mx-auto rounded-full'
+					<Image
+						className='mx-auto rounded-full'
 						src='/images/Oopsy.png'
 						alt='Oopsy!'
+						width={48}
+						height={48}
 					/>
 					<p>
 						Looks like there may have been some conflicting effects in

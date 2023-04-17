@@ -1,3 +1,7 @@
+import Image from "next/image";
+
 export default function Icon(props) {
-   return <img className="w-12 h-12" src={props.src} alt="An icon" />
+	return (
+      <Image src={props.src} alt='An Icon' width={48} height={48} />
+	);
 }
