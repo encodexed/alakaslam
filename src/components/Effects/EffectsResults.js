@@ -54,7 +54,7 @@ export default function EffectsResults(props) {
 					<div className='flex-1'>
 						<ConcoctionCard>
 							<div className='flex flex-col text-center'>
-								<h2 className='text-xl leading-none'>{potionName}</h2>
+								<h2 className='text-lg leading-none sm:text-xl'>{potionName}</h2>
 								<div>
 									<Image
 										priority={true}
@@ -83,7 +83,7 @@ export default function EffectsResults(props) {
 					<div className='flex-1'>
 						<ConcoctionCard>
 							<div className='flex flex-col text-center'>
-								<h2 className='text-xl leading-none'>{poisonName}</h2>
+								<h2 className='text-lg leading-none sm:text-xl'>{poisonName}</h2>
 								<div>
 									<Image
 										priority={true}

@@ -6,7 +6,7 @@ export default function NoInput() {
 		<div className='border'>
 			<Card>
 				<div className='flex flex-col space-y-6 leading-none'>
-					<p className='text-pink-500'>
+					<p className='text-sm text-pink-500 sm:text-base'>
 						<Image
 							priority={true}
 							className='inline'
@@ -19,7 +19,7 @@ export default function NoInput() {
 						you craft potions and poisons in the game Elder Scrolls
 						Online.
 					</p>
-					<p className='text-sky-500'>
+					<p className='text-sm sm:text-base text-sky-500'>
 						<Image
 							priority={true}
 							className='inline'
@@ -32,7 +32,7 @@ export default function NoInput() {
 						potion/poison. Choosing effects will output a list of possible
 						combinations for your desired potion.
 					</p>
-					<p className='pb-2 text-lime-500'>
+					<p className='pb-2 text-sm sm:text-base text-lime-500'>
 						<Image
 							priority={true}
 							className='inline'

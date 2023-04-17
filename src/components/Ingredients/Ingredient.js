@@ -39,7 +39,7 @@ export default function Ingredient(props) {
 				<Icon src={src} />
 			</div>
 			<div className='flex-1 w-40 my-auto justify-content-center'>
-				<h3 className='text-center'>{name}</h3>
+				<h3 className='text-sm text-center sm:text-base'>{name}</h3>
 			</div>
 			<div className='my-auto flex-0'>
 				{!props.isDisabled && (

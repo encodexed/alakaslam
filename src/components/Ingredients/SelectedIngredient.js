@@ -5,9 +5,9 @@ import DisabledRemoveButton from "../UI/DisabledRemoveButton";
 export default function SelectedIngredient(props) {
 	const { id, name, effect1, effect2, effect3, effect4, src } =
 		props.ingredient;
-	const unmatchedStyle = "text-sm leading-none text-center text-slate-500";
-	const matchedStyle = "text-sm leading-none text-center text-purple-500";
-	const counterEffectStyle = "text-sm leading-none text-center text-red-500";
+	const unmatchedStyle = "sm:text-sm text-xs leading-none text-center text-slate-500";
+	const matchedStyle = "sm:text-sm text-xs leading-none text-center text-purple-500";
+	const counterEffectStyle = "sm:text-sm text-xs leading-none text-center text-red-500";
 	const matchedShadowStyle = { textShadow: "purple 0 0 0.5px" };
 	const counterEffectShadowStyle = { textShadow: "red 0 0 0.5px" };
 	let shadow1, shadow2, shadow3, shadow4;
@@ -58,7 +58,7 @@ export default function SelectedIngredient(props) {
 				<Icon src={src} />
 			</div>
 			<div className='flex-1 w-40 my-auto justify-content-center'>
-				<h3 className='text-center'>{name}</h3>
+				<h3 className='text-sm text-center sm:text-base'>{name}</h3>
 			</div>
 			<div className='my-auto flex-0'>
 				{id >= 0 && (

@@ -452,7 +452,7 @@ export default function Combinations(props) {
 					link={toggleStrictMode}
 					linkContent={strictSetting}
 				/>
-				<div className='flex flex-col h-48 text-center border'>
+				<div className='flex flex-col h-48 text-sm text-center border sm:text-base'>
 					<p className='px-4 my-auto'>
 						Unfortunately, concoctions with this effect alone do not
 						exist. Consider{" "}
@@ -479,7 +479,7 @@ export default function Combinations(props) {
 					link={toggleStrictMode}
 					linkContent={strictSetting}
 				/>
-				<div className='flex flex-col h-48 text-center border'>
+				<div className='flex flex-col h-48 text-sm text-center border sm:text-base'>
 					<p className='px-4 my-auto'>
 						Add effects from above to start seeing results.
 						<br />
@@ -504,7 +504,7 @@ export default function Combinations(props) {
 					link={toggleStrictMode}
 					linkContent={strictSetting}
 				/>
-				<div className='flex flex-col h-48 text-center border'>
+				<div className='flex flex-col h-48 text-sm text-center border sm:text-base'>
 					<p className='px-4 my-auto'>
 						Unfortunately, this combination of effects does not exist in
 						ESO. Consider{" "}
@@ -530,7 +530,7 @@ export default function Combinations(props) {
 					link={toggleStrictMode}
 					linkContent={strictSetting}
 				/>
-				<div className='flex flex-col h-48 text-center border'>
+				<div className='flex flex-col h-48 text-sm text-center border sm:text-base'>
 					<p className='px-4 my-auto'>
 						Unfortunately, this combination of effects does not exist in
 						ESO, even with potential side effects considered.

@@ -14,7 +14,7 @@ export default function CounterEffect(props) {
 	});
 
 	return (
-		<div className='mt-2 text-sm text-center text-red-500' style={{ textShadow: "red 0 0 0.5px" }}>
+		<div className='mt-2 text-xs text-center text-red-500 sm:text-sm' style={{ textShadow: "red 0 0 0.5px" }}>
 			{problems.map((problem) => {
 				return <p key={problem.id}>{problem.description}</p>;
 			})}

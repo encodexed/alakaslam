@@ -8,7 +8,7 @@ export default function NoMatches(props) {
 			<div className='border'>
 				<Card>
 					<div className='flex flex-col space-y-6 leading-none text-center text-red-500'>
-						<h2 className='text-2xl'>Oops..!</h2>
+						<h2 className='text-xl sm:text-2xl'>Oops..!</h2>
 						<Image
 							priority={true}
 							className='mx-auto rounded-full'
@@ -32,7 +32,7 @@ export default function NoMatches(props) {
 		<div className='border'>
 			<Card>
 				<div className='flex flex-col space-y-6 leading-none text-center text-red-500'>
-					<h2 className='text-2xl'>Oops..!</h2>
+					<h2 className='text-xl sm:text-2xl'>Oops..!</h2>
 					<Image
 						priority={true}
 						className='mx-auto rounded-full'
