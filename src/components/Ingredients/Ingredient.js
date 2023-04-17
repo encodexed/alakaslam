@@ -13,8 +13,8 @@ export default function Ingredient(props) {
 		props.selectIngredient(props.id);
 	};
 
-	const incompatibleStyle = "text-sm leading-none text-center text-slate-500";
-	const compatibleStyle = "text-sm leading-none text-center text-green-500";
+	const incompatibleStyle = "sm:text-sm leading-none text-xs text-center text-slate-500";
+	const compatibleStyle = "sm:text-sm leading-none text-xs text-center text-green-500";
 	let style1 = incompatibleStyle;
 	let style2 = incompatibleStyle;
 	let style3 = incompatibleStyle;

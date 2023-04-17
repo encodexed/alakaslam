@@ -240,7 +240,7 @@ const IngredientsData = [
 		effect2: "Invisible",
 		effect3: "Lingering Health",
 		effect4: "Defile",
-		src: "/images/ingredients/Spider_egg.png",
+		src: "/images/ingredients/Spider_Egg.png",
 	},
 	{
 		id: "27",

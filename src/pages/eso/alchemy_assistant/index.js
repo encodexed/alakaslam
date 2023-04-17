@@ -9,11 +9,11 @@ export default function Home() {
 		setShowInfo((prevState) => {
 			return !prevState;
 		});
-	}
+	};
 
 	return (
 		<main className='flex flex-col min-h-screen font-pangolin bg-gradient-to-b from-sky-500 via-orange-600 to-indigo-800'>
-			{showInfo && <Info toggleShowInfo={toggleShowInfo} /> }
+			{showInfo && <Info toggleShowInfo={toggleShowInfo} />}
 			<Content toggleShowInfo={toggleShowInfo} />
 		</main>
 	);

@@ -32,7 +32,7 @@ export default function Effect(props) {
 				{!props.isSelected && props.isDisabled && <DisabledAddButton />}
 			</div>
 			<div className='flex-1 mx-2 my-auto'>
-				<p className='text-sm leading-none text-center text-slate-500'>
+				<p className='text-xs leading-none text-center sm:text-sm text-slate-500'>
 					{summary}
 				</p>
 			</div>
