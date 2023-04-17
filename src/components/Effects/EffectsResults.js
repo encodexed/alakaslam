@@ -56,7 +56,8 @@ export default function EffectsResults(props) {
 							<div className='flex flex-col text-center'>
 								<h2 className='text-xl leading-none'>{potionName}</h2>
 								<div>
-								<Image
+									<Image
+										priority={true}
 										className='mx-auto'
 										src='/images/potions/Increase_Armor.png'
 										alt='A potion!'
@@ -84,7 +85,8 @@ export default function EffectsResults(props) {
 							<div className='flex flex-col text-center'>
 								<h2 className='text-xl leading-none'>{poisonName}</h2>
 								<div>
-								<Image
+									<Image
+										priority={true}
 										className='mx-auto'
 										src='/images/poisons/Red_Poison.png'
 										alt='A poison!'

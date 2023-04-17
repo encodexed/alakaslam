@@ -10,6 +10,7 @@ export default function NoMatches(props) {
 					<div className='flex flex-col space-y-6 leading-none text-center text-red-500'>
 						<h2 className='text-2xl'>Oops..!</h2>
 						<Image
+							priority={true}
 							className='mx-auto rounded-full'
 							src='/images/Oopsy.png'
 							alt='Oopsy!'
@@ -33,6 +34,7 @@ export default function NoMatches(props) {
 				<div className='flex flex-col space-y-6 leading-none text-center text-red-500'>
 					<h2 className='text-2xl'>Oops..!</h2>
 					<Image
+						priority={true}
 						className='mx-auto rounded-full'
 						src='/images/Oopsy.png'
 						alt='Oopsy!'

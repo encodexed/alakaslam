@@ -91,6 +91,7 @@ export default function IngredientResults(props) {
 								<h2 className='text-xl leading-none'>{potionName}</h2>
 								<div>
 									<Image
+										priority={true}
 										className='mx-auto'
 										src='/images/potions/Increase_Armor.png'
 										alt='A potion!'
@@ -119,6 +120,7 @@ export default function IngredientResults(props) {
 								<h2 className='text-xl leading-none'>{poisonName}</h2>
 								<div>
 									<Image
+										priority={true}
 										className='mx-auto'
 										src='/images/poisons/Red_Poison.png'
 										alt='A poison!'

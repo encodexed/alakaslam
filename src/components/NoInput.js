@@ -8,6 +8,7 @@ export default function NoInput() {
 				<div className='flex flex-col space-y-6 leading-none'>
 					<p className='text-pink-500'>
 						<Image
+							priority={true}
 							className='inline'
 							src='/images/ingredients/Mountain_Flower.png'
 							alt='Mountain Flower'
@@ -20,6 +21,7 @@ export default function NoInput() {
 					</p>
 					<p className='text-sky-500'>
 						<Image
+							priority={true}
 							className='inline'
 							src='/images/ingredients/Columbine.png'
 							alt='Columbine'
@@ -32,6 +34,7 @@ export default function NoInput() {
 					</p>
 					<p className='pb-2 text-lime-500'>
 						<Image
+							priority={true}
 							className='inline'
 							src='/images/ingredients/Dragon_Rheum.png'
 							alt='Dragon Rheum'
