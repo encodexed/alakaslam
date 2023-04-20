@@ -2,7 +2,6 @@ import Ingredient from "./Ingredient";
 import IngredientsData from "../../IngredientsData";
 import SelectedIngredients from "./SelectedIngredients";
 import { useState } from "react";
-import SectionHeader from "../UI/SectionHeader";
 
 function getIncompability(effects) {
 	let incompatible = [];
@@ -20,6 +19,7 @@ function getIncompability(effects) {
 }
 
 export default function Ingredients(props) {
+	// These are IDs
 	const [selectedIngredients, setSelectedIngredients] = useState([]);
 	const [incompatibleIngredients, setIncompatibleIngredients] = useState([]);
 	const [effects, setEffects] = useState([]);
@@ -75,10 +75,6 @@ export default function Ingredients(props) {
 		}
 	};
 
-	const showEffects = () => {
-		props.effectsClickHandler();
-	}
-
 	let displayIngredients = [];
 	IngredientsData.forEach((ingredient) => {
 		if (!incompatibleIngredients.includes(ingredient.id)) {
@@ -88,32 +84,30 @@ export default function Ingredients(props) {
 
 	return (
 		<>
-			<SectionHeader title={'Add Ingredients'} link={showEffects} linkContent={'show effects instead'} />
-			<div className='h-48 overflow-scroll border'>
+			<div className='sticky z-10 top-[26px]'>
+				<SelectedIngredients selectedIDs={selectedIngredients} />
+			</div>
+			<div className='overflow-scroll'>
 				{displayIngredients.map((ingredient) => {
 					let isSelected = false;
 					if (selectedIngredients.includes(ingredient.id)) {
 						isSelected = true;
 					}
 
-					return (
-						<Ingredient
-							key={ingredient.id}
-							selectIngredient={selectIngredient}
-							deselectIngredient={deselectIngredient}
-							id={ingredient.id}
-							effects={effects}
-							isSelected={isSelected}
-							isDisabled={disableAddButtons}
-						/>
-					);
+					if (!isSelected) {
+						return (
+							<Ingredient
+								key={ingredient.id}
+								selectIngredient={selectIngredient}
+								deselectIngredient={deselectIngredient}
+								id={ingredient.id}
+								effects={effects}
+								isDisabled={disableAddButtons}
+							/>
+						);
+					}
 				})}
 			</div>
-			<SelectedIngredients
-				selectedIngredients={selectedIngredients}
-				deselectIngredient={deselectIngredient}
-				effects={effects}
-			/>
 		</>
 	);
 }
