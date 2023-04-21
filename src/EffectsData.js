@@ -1,6 +1,6 @@
 const EffectsData = [
 	{
-		id: "100",
+		id: 100,
 		name: "Breach",
 		counterEffect: "Increase Spell Resist",
 		summary: "Reduces spell resistance",
@@ -14,7 +14,7 @@ const EffectsData = [
 		src: "/images/effects/Breach.png",
 	},
 	{
-		id: "101",
+		id: 101,
 		name: "Cowardice",
 		counterEffect: "Increase Spell Power",
 		summary: "Reduces weapon and spell damage",
@@ -28,7 +28,7 @@ const EffectsData = [
 		src: "/images/effects/Cowardice.png",
 	},
 	{
-		id: "102",
+		id: 102,
 		name: "Defile",
 		counterEffect: "Vitality",
 		summary: "Reduces healing taken",
@@ -42,7 +42,7 @@ const EffectsData = [
 		src: "/images/effects/Defile.png",
 	},
 	{
-		id: "103",
+		id: 103,
 		name: "Detection",
 		counterEffect: "Invisible",
 		summary: "Detects invisible units",
@@ -56,7 +56,7 @@ const EffectsData = [
 		src: "/images/effects/Detection.png",
 	},
 	{
-		id: "104",
+		id: 104,
 		name: "Enervation",
 		counterEffect: "Weapon Critical",
 		summary: "Reduces critical damage",
@@ -70,7 +70,7 @@ const EffectsData = [
 		src: "/images/effects/Enervation.png",
 	},
 	{
-		id: "105",
+		id: 105,
 		name: "Entrapment",
 		counterEffect: "Unstoppable",
 		summary: "Stuns/immobilises the target",
@@ -83,7 +83,7 @@ const EffectsData = [
 		src: "/images/effects/Entrapment.png",
 	},
 	{
-		id: "106",
+		id: 106,
 		name: "Fracture",
 		counterEffect: "Increase Armor",
 		summary: "Reduces physical resistance",
@@ -97,7 +97,7 @@ const EffectsData = [
 		src: "/images/effects/Fracture.png",
 	},
 	{
-		id: "107",
+		id: 107,
 		name: "Gradual Ravage Health",
 		counterEffect: "Lingering Health",
 		summary: "Drains health over a duration",
@@ -111,7 +111,7 @@ const EffectsData = [
 		src: "/images/effects/Gradual_Ravage_Health.png",
 	},
 	{
-		id: "108",
+		id: 108,
 		name: "Heroism",
 		counterEffect: "Timidity",
 		summary: "Increases ultimate generation, inflicts healing absorption",
@@ -125,7 +125,7 @@ const EffectsData = [
 		src: "/images/effects/Heroism.png",
 	},
 	{
-		id: "109",
+		id: 109,
 		name: "Hindrance",
 		counterEffect: "Speed",
 		summary: "Reduces movement speed",
@@ -139,7 +139,7 @@ const EffectsData = [
 		src: "/images/effects/Hindrance.png",
 	},
 	{
-		id: "110",
+		id: 110,
 		name: "Increase Armor",
 		counterEffect: "Fracture",
 		summary: "Alters physical resistance",
@@ -153,7 +153,7 @@ const EffectsData = [
 		src: "/images/effects/Increase_Armor.png",
 	},
 	{
-		id: "111",
+		id: 111,
 		name: "Increase Spell Power",
 		counterEffect: "Cowardice",
 		summary: "Alters spell power",
@@ -167,7 +167,7 @@ const EffectsData = [
 		src: "/images/effects/Increase_Spell_Power.png",
 	},
 	{
-		id: "112",
+		id: 112,
 		name: "Increase Spell Resist",
 		counterEffect: "Breach",
 		summary: "Alters spell resistance",
@@ -181,7 +181,7 @@ const EffectsData = [
 		src: "/images/effects/Increase_Spell_Resist.png",
 	},
 	{
-		id: "113",
+		id: 113,
 		name: "Increase Weapon Power",
 		counterEffect: "Maim",
 		summary: "Alters physical power",
@@ -195,7 +195,7 @@ const EffectsData = [
 		src: "/images/effects/Increase_Weapon_Power.png",
 	},
 	{
-		id: "114",
+		id: 114,
 		name: "Invisible",
 		counterEffect: "Detection",
 		summary: "Lets you vanish, or marks your victim",
@@ -209,7 +209,7 @@ const EffectsData = [
 		src: "/images/effects/Invisible.png",
 	},
 	{
-		id: "115",
+		id: 115,
 		name: "Lingering Health",
 		counterEffect: "Gradual Ravage Health",
 		summary: "Restores health over a duration",
@@ -223,7 +223,7 @@ const EffectsData = [
 		src: "/images/effects/Lingering_Health.png",
 	},
 	{
-		id: "116",
+		id: 116,
 		name: "Maim",
 		counterEffect: "Increase Weapon Power",
 		summary: "Reduces damage output",
@@ -237,7 +237,7 @@ const EffectsData = [
 		src: "/images/effects/Maim.png",
 	},
 	{
-		id: "117",
+		id: 117,
 		name: "Protection",
 		counterEffect: "Vulnerability",
 		summary: "Reduces damage taken",
@@ -251,7 +251,7 @@ const EffectsData = [
 		src: "/images/effects/Protection.png",
 	},
 	{
-		id: "118",
+		id: 118,
 		name: "Ravage Health",
 		counterEffect: "Restore Health",
 		summary: "Drains health over a duration",
@@ -265,7 +265,7 @@ const EffectsData = [
 		src: "/images/effects/Ravage_Health.png",
 	},
 	{
-		id: "119",
+		id: 119,
 		name: "Ravage Magicka",
 		counterEffect: "Restore Magicka",
 		summary: "Increases magicka costs",
@@ -279,7 +279,7 @@ const EffectsData = [
 		src: "/images/effects/Ravage_Magicka.png",
 	},
 	{
-		id: "120",
+		id: 120,
 		name: "Ravage Stamina",
 		counterEffect: "Restore Stamina",
 		summary: "Increases stamina costs",
@@ -293,7 +293,7 @@ const EffectsData = [
 		src: "/images/effects/Ravage_Stamina.png",
 	},
 	{
-		id: "121",
+		id: 121,
 		name: "Restore Health",
 		counterEffect: "Ravage Health",
 		summary: "Restores/drains health immediately and over time, grants major fortitude",
@@ -307,7 +307,7 @@ const EffectsData = [
 		src: "/images/effects/Restore_Health.png",
 	},
 	{
-		id: "122",
+		id: 122,
 		name: "Restore Magicka",
 		counterEffect: "Ravage Magicka",
 		summary: "Restores/drains magicka immediately and over time, grants major intellect",
@@ -321,7 +321,7 @@ const EffectsData = [
 		src: "/images/effects/Restore_Magicka.png",
 	},
 	{
-		id: "123",
+		id: 123,
 		name: "Restore Stamina",
 		counterEffect: "Ravage Stamina",
 		summary: "Restores/drains stamina immediately and over time, grants major endurance",
@@ -335,7 +335,7 @@ const EffectsData = [
 		src: "/images/effects/Restore_Stamina.png",
 	},
 	{
-		id: "124",
+		id: 124,
 		name: "Speed",
 		counterEffect: "Hindrance",
 		summary: "Alters movement speed",
@@ -349,7 +349,7 @@ const EffectsData = [
 		src: "/images/effects/Speed.png",
 	},
 	{
-		id: "125",
+		id: 125,
 		name: "Spell Critical",
 		counterEffect: "Uncertainty",
 		summary: "Alters spell critical",
@@ -363,7 +363,7 @@ const EffectsData = [
 		src: "/images/effects/Spell_Critical.png",
 	},
 	{
-		id: "126",
+		id: 126,
 		name: "Timidity",
 		counterEffect: "Heroism",
 		summary: "Removes generated ultimate",
@@ -377,7 +377,7 @@ const EffectsData = [
 		src: "/images/effects/Timidity.png",
 	},
 	{
-		id: "127",
+		id: 127,
 		name: "Uncertainty",
 		counterEffect: "Spell Critical",
 		summary: "Reduces critical chance rate",
@@ -391,7 +391,7 @@ const EffectsData = [
 		src: "/images/effects/Uncertainty.png",
 	},
 	{
-		id: "128",
+		id: 128,
 		name: "Unstoppable",
 		counterEffect: "Entrapment",
 		summary: "Grants crowd control immunity, immobilises",
@@ -405,7 +405,7 @@ const EffectsData = [
 		src: "/images/effects/Unstoppable.png",
 	},
 	{
-		id: "129",
+		id: 129,
 		name: "Vitality",
 		counterEffect: "Defile",
 		summary: "Increases healing taken",
@@ -419,7 +419,7 @@ const EffectsData = [
 		src: "/images/effects/Vitality.png",
 	},
 	{
-		id: "130",
+		id: 130,
 		name: "Vulnerability",
 		counterEffect: "Protection",
 		summary: "Increases damage taken",
@@ -433,7 +433,7 @@ const EffectsData = [
 		src: "/images/effects/Vulnerability.png",
 	},
 	{
-		id: "131",
+		id: 131,
 		name: "Weapon Critical",
 		counterEffect: "Enervation",
 		summary: "Alters weapon critical",

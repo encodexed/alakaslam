@@ -2,7 +2,6 @@ import EffectsData from "../../EffectsData";
 import AddButton from "../UI/AddButton";
 import DisabledAddButton from "../UI/DisabledAddButton";
 import Icon from "../UI/Icon";
-import RemoveButton from "../UI/RemoveButton";
 
 export default function Effect(props) {
 	const effect = EffectsData[props.id - 100];
@@ -12,12 +11,8 @@ export default function Effect(props) {
 		props.selectEffect(id);
 	};
 
-	const deselectEffect = () => {
-		props.deselectEffect(id);
-	};
-
 	return (
-		<div className='flex'>
+		<div className='flex border-b'>
 			<div>
 				<Icon src={src} />
 			</div>
@@ -25,7 +20,6 @@ export default function Effect(props) {
 				<h3 className='text-sm text-center sm:text-base'>{name}</h3>
 			</div>
 			<div className='my-auto flex-0'>
-				{props.isSelected && <RemoveButton onClick={deselectEffect} />}
 				{!props.isSelected && !props.isDisabled && (
 					<AddButton onClick={selectEffect} />
 				)}

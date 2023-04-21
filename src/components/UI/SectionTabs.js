@@ -6,8 +6,8 @@ export default function SectionTabs(props) {
 	};
 
 	const hover = props.tab2 ? 'hover:bg-slate-400 cursor-pointer' : '';
-	const style1 = `flex-1 text-center ${hover}`;
-	const style2 = `flex-1 text-center border-l-2 border-black ${hover}`
+	const style1 = `flex-1 truncate text-sm xs:text-base text-center ${hover}`;
+	const style2 = `flex-1 truncate text-sm xs:text-base text-center border-l-2 border-black ${hover}`
 
 	const button = props.shown ? "hide" : "show";
 

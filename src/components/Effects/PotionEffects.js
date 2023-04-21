@@ -1,4 +1,4 @@
-import SectionHeader from "../UI/SectionHeader";
+import SelectedEffects from "./SelectedEffects";
 import EffectsData from "../../EffectsData";
 import Effect from "./Effect";
 import { useState } from "react";
@@ -31,24 +31,24 @@ export default function PotionEffects(props) {
 
 	return (
 		<>
+			<div className='sticky z-10 top-[22px] xs:top-[26px]'>
+				<SelectedEffects selectedIDs={selectedEffectsIDs} />
+			</div>
 			{EffectsData.map((effect) => {
-				let isSelected = false;
-				if (selectedEffectsIDs.includes(effect.id)) {
-					isSelected = true;
+				if (!selectedEffectsIDs.includes(effect.id)) {
+					return (
+						<Effect
+							key={"z" + effect.id}
+							id={effect.id}
+							selectEffect={selectEffect}
+							deselectEffect={deselectEffect}
+							isDisabled={disableAddButtons}
+						/>
+					);
 				}
-				return (
-					<Effect
-						key={"z" + effect.id}
-						id={effect.id}
-						selectEffect={selectEffect}
-						deselectEffect={deselectEffect}
-						isDisabled={disableAddButtons}
-						isSelected={isSelected}
-					/>
-				);
 			})}
-			<Combinations selectedEffectsIDs={selectedEffectsIDs} />
-			<EffectsResults selectedEffectsIDs={selectedEffectsIDs} />
+			{/* <Combinations selectedEffectsIDs={selectedEffectsIDs} />
+			<EffectsResults selectedEffectsIDs={selectedEffectsIDs} /> */}
 		</>
 	);
 }

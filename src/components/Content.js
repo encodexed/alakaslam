@@ -5,7 +5,7 @@ import Version from "./Version";
 import SectionCard from "./UI/SectionCard";
 
 export default function Content(props) {
-	const [selectionMode, setSelectionMode] = useState("ingredients");
+	const [selectionMode, setSelectionMode] = useState("effects");
 	const [sectionsShown, setSectionsShown] = useState(2);
 
 	const ingredientsClickHandler = () => {

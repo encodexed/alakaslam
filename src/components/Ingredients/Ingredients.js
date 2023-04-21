@@ -84,7 +84,7 @@ export default function Ingredients(props) {
 
 	return (
 		<>
-			<div className='sticky z-10 top-[26px]'>
+			<div className='sticky z-10 top-[22px] xs:top-[26px]'>
 				<SelectedIngredients selectedIDs={selectedIngredients} />
 			</div>
 			<div className='overflow-scroll'>
