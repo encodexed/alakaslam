@@ -3,7 +3,7 @@ import RemoveButton from "../UI/RemoveButton";
 import EffectsData from "@/EffectsData";
 
 export default function SelectedEffect(props) {
-   const effect = EffectsData[props.effectID - 100];
+   const effect = EffectsData[props.effectID];
    const { id, name, src, summary } = effect;
    
    const deselectEffect = () => {

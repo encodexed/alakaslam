@@ -13,7 +13,7 @@ export default function SelectedIngredient(props) {
 	const matchedShadowStyle = { textShadow: "purple 0 0 0.5px" };
 	const counterEffectShadowStyle = { textShadow: "red 0 0 0.5px" };
 
-	const { id, name, effect1, effect2, effect3, effect4, src } =
+	const { id, name, effects, src } =
 		IngredientsData[props.ingredientID];
 
 	let shadow1, shadow2, shadow3, shadow4;
@@ -23,36 +23,36 @@ export default function SelectedIngredient(props) {
 	let style4 = unmatchedStyle;
 
 	// Display matching effects
-	if (props.matchedEffects.includes(effect1)) {
+	if (props.matchedEffects.includes(effects[0])) {
 		style1 = matchedStyle;
 		shadow1 = matchedShadowStyle;
 	}
-	if (props.matchedEffects.includes(effect2)) {
+	if (props.matchedEffects.includes(effects[1])) {
 		style2 = matchedStyle;
 		shadow2 = matchedShadowStyle;
 	}
-	if (props.matchedEffects.includes(effect3)) {
+	if (props.matchedEffects.includes(effects[2])) {
 		style3 = matchedStyle;
 		shadow3 = matchedShadowStyle;
 	}
-	if (props.matchedEffects.includes(effect4)) {
+	if (props.matchedEffects.includes(effects[3])) {
 		style4 = matchedStyle;
 		shadow4 = matchedShadowStyle;
 	}
 	// Change style for counter effects
-	if (props.counterEffects.includes(effect1)) {
+	if (props.counterEffects.includes(effects[0])) {
 		style1 = counterEffectStyle;
 		shadow1 = counterEffectShadowStyle;
 	}
-	if (props.counterEffects.includes(effect2)) {
+	if (props.counterEffects.includes(effects[1])) {
 		style2 = counterEffectStyle;
 		shadow2 = counterEffectShadowStyle;
 	}
-	if (props.counterEffects.includes(effect3)) {
+	if (props.counterEffects.includes(effects[2])) {
 		style3 = counterEffectStyle;
 		shadow3 = counterEffectShadowStyle;
 	}
-	if (props.counterEffects.includes(effect4)) {
+	if (props.counterEffects.includes(effects[3])) {
 		style4 = counterEffectStyle;
 		shadow4 = counterEffectShadowStyle;
 	}
@@ -75,18 +75,18 @@ export default function SelectedIngredient(props) {
 				</div>
 				<div className='flex-1 my-auto ml-2'>
 					<p className={style1} style={shadow1}>
-						{effect1}
+						{effects[0]}
 					</p>
 					<p className={style2} style={shadow2}>
-						{effect2}
+						{effects[1]}
 					</p>
 				</div>
 				<div className='flex-1 my-auto'>
 					<p className={style3} style={shadow3}>
-						{effect3}
+						{effects[2]}
 					</p>
 					<p className={style4} style={shadow4}>
-						{effect4}
+						{effects[3]}
 					</p>
 				</div>
 			</div>
@@ -101,10 +101,10 @@ export default function SelectedIngredient(props) {
 					<RemoveButton onClick={deselectHandler} />
 				</div>
 				<div className='flex-1 my-1 ml-1 truncate'>
-					<p className={style1}>{effect1}</p>
-					<p className={style2}>{effect2}</p>
-					<p className={style3}>{effect3}</p>
-					<p className={style4}>{effect4}</p>
+					<p className={style1}>{effects[0]}</p>
+					<p className={style2}>{effects[1]}</p>
+					<p className={style3}>{effects[2]}</p>
+					<p className={style4}>{effects[3]}</p>
 				</div>
 			</div>
 		</>

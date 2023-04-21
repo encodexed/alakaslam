@@ -4,7 +4,7 @@ import IngredientsData from "../../IngredientsData";
 import DisabledAddButton from "../UI/DisabledAddButton";
 
 export default function Ingredient(props) {
-	const { name, effect1, effect2, effect3, effect4, src } =
+	const { name, effects, src } =
 		IngredientsData[props.id];
 
 	const addSelectionHandler = () => {
@@ -34,12 +34,12 @@ export default function Ingredient(props) {
 					{props.isDisabled && <DisabledAddButton />}
 				</div>
 				<div className='flex-1 my-auto ml-2'>
-					<p className={style1}>{effect1}</p>
-					<p className={style2}>{effect2}</p>
+					<p className={style1}>{effects[0]}</p>
+					<p className={style2}>{effects[1]}</p>
 				</div>
 				<div className='flex-1 my-auto'>
-					<p className={style3}>{effect3}</p>
-					<p className={style4}>{effect4}</p>
+					<p className={style3}>{effects[2]}</p>
+					<p className={style4}>{effects[3]}</p>
 				</div>
 			</div>
 			<div className='flex px-2 border-b xs:hidden'>
@@ -56,10 +56,10 @@ export default function Ingredient(props) {
 					{props.isDisabled && <DisabledAddButton />}
 				</div>
 				<div className='flex-1 my-1 ml-1 truncate'>
-					<p className={style1}>{effect1}</p>
-					<p className={style2}>{effect2}</p>
-					<p className={style3}>{effect3}</p>
-					<p className={style4}>{effect4}</p>
+					<p className={style1}>{effects[0]}</p>
+					<p className={style2}>{effects[1]}</p>
+					<p className={style3}>{effects[2]}</p>
+					<p className={style4}>{effects[3]}</p>
 				</div>
 			</div>
 		</>

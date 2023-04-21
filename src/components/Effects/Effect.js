@@ -4,7 +4,7 @@ import DisabledAddButton from "../UI/DisabledAddButton";
 import Icon from "../UI/Icon";
 
 export default function Effect(props) {
-	const effect = EffectsData[props.id - 100];
+	const effect = EffectsData[props.id];
 	const { id, name, src, summary } = effect;
 
 	const selectEffect = () => {
