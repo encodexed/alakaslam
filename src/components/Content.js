@@ -11,18 +11,25 @@ export default function Content(props) {
 	const [sectionsShown, setSectionsShown] = useState(2);
 	// An array of IDs relating to either ingredients or effects, as selected by the user. Maximum 3 selections.
 	const [userSelections, setUserSelections] = useState([]);
+	// If three ingredients/effects are selected, adding more is disabled.
+	const [disableAddButtons, setDisableAddButtons] = useState(false);
 
 	const selectOne = (id) => {
+		if (userSelections.length === 2) {
+			setDisableAddButtons(true);
+		}
 		if (userSelections.length < 3) {
 			setUserSelections([...userSelections, id]);
 		}
 	};
 
 	const deselectOne = (id) => {
+		setDisableAddButtons(false);
 		const newSelections = userSelections.filter(
 			(selection) => selection !== id
 		);
 		setUserSelections([...newSelections]);
+		
 	};
 
 	const ingredientsClickHandler = () => {
@@ -75,6 +82,7 @@ export default function Content(props) {
 						selectedIDs={userSelections}
 						selectOne={selectOne}
 						deselectOne={deselectOne}
+						disableAddButtons={disableAddButtons}
 					/>
 				)}
 				{selectionMode === "ingredients" && (
@@ -82,6 +90,7 @@ export default function Content(props) {
 						selectedIDs={userSelections}
 						selectOne={selectOne}
 						deselectOne={deselectOne}
+						disableAddButtons={disableAddButtons}
 					/>
 				)}
 			</SectionCard>

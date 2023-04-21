@@ -1,47 +1,49 @@
 import SelectedEffects from "./SelectedEffects";
 import EffectsData from "../../EffectsData";
 import Effect from "./Effect";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import getCompatible from "@/functions/getCompatible";
 import EffectsResults from "./EffectsResults";
 import Combinations from "./Combinations";
 
 export default function PotionEffects(props) {
-	const [selectedEffectsIDs, setSelectedEffectsIDs] = useState([]);
-	const [disableAddButtons, setDisableAddButtons] = useState(false);
+	// An array of IDs for effects that work with the user's selected effects
+	const [compatibleEffectsIDs, setCompatibleEffectsIDs] = useState([]);
 
-	const selectEffect = (id) => {
-		if (selectedEffectsIDs.length < 3) {
-			setSelectedEffectsIDs([...selectedEffectsIDs, id]);
+	useEffect(() => {
+		if (props.selectedIDs.length === 0) {
+			// When no effects are selected by the user, display all effects
+			let allEffects = [];
+			for (let i = 0; i < EffectsData.length; i++) {
+				allEffects.push(i);
+			}
+			setCompatibleEffectsIDs([...allEffects]);
+		} else {
+			// Get effects that work with the user's selected effects
+			const compatibles = getCompatible("effects", props.selectedIDs);
+			setCompatibleEffectsIDs(compatibles);
 		}
-
-		if (selectedEffectsIDs.length === 2) {
-			setDisableAddButtons(true);
-		}
-	};
-
-	const deselectEffect = (id) => {
-		setSelectedEffectsIDs(
-			selectedEffectsIDs.filter((effectID) => id !== effectID)
-		);
-
-		if (selectedEffectsIDs.length === 3) {
-			setDisableAddButtons(false);
-		}
-	};
+	}, [props.selectedIDs]);
 
 	return (
 		<>
 			<div className='sticky z-10 top-[22px] xs:top-[26px]'>
-				<SelectedEffects selectedIDs={props.selectedIDs} deselectEffect={props.deselectOne} />
+				<SelectedEffects
+					selectedIDs={props.selectedIDs}
+					deselectEffect={props.deselectOne}
+				/>
 			</div>
 			{EffectsData.map((effect) => {
-				if (!props.selectedIDs.includes(effect.id)) {
+				if (
+					!props.selectedIDs.includes(effect.id) &&
+					compatibleEffectsIDs.includes(effect.id)
+				) {
 					return (
 						<Effect
 							key={"z" + effect.id}
 							id={effect.id}
 							selectEffect={props.selectOne}
-							isDisabled={disableAddButtons}
+							isDisabled={props.disableAddButtons}
 						/>
 					);
 				}

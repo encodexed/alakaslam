@@ -2,9 +2,10 @@ const EffectsData = [
 	{
 		id: 0,
 		name: "Breach",
-		counterEffect: "Increase Spell Resist",
+		counterEffect: 12,
 		summary: "Reduces spell resistance",
-		hierarchy: "28",
+		compatibleEffects: [10, 17, 29, 11, 22, 25, 18, 19],
+		hierarchy: 28,
 		potionName: "Essence of Ravage Spell Protection",
 		poisonName: "Breaching Poison IX",
 		potionEffect:
@@ -16,9 +17,10 @@ const EffectsData = [
 	{
 		id: 1,
 		name: "Cowardice",
-		counterEffect: "Increase Spell Power",
+		counterEffect: 11,
 		summary: "Reduces weapon and spell damage",
-		hierarchy: "21",
+		compatibleEffects: [19, 21, 14, 12, 22, 3],
+		hierarchy: 21,
 		potionName: "Essence of Cowardice",
 		poisonName: "Cowardice Poison IX",
 		potionEffect:
@@ -30,9 +32,10 @@ const EffectsData = [
 	{
 		id: 2,
 		name: "Defile",
-		counterEffect: "Vitality",
+		counterEffect: 29,
 		summary: "Reduces healing taken",
-		hierarchy: "23",
+		compatibleEffects: [12, 9, 30, 15, 21, 8, 10, 17, 18, 7, 14],
+		hierarchy: 23,
 		potionName: "Essence of Defile",
 		poisonName: "Defiling Poison IX",
 		potionEffect:
@@ -44,9 +47,10 @@ const EffectsData = [
 	{
 		id: 3,
 		name: "Detection",
-		counterEffect: "Invisible",
+		counterEffect: 14,
 		summary: "Detects invisible units",
-		hierarchy: "8",
+		compatibleEffects: [26, 19, 23, 22, 11, 18, 6, 4, 29, 1, 12, 31, 9, 28],
+		hierarchy: 8,
 		potionName: "Essence of Detection",
 		poisonName: "Stealth-Draining Poison IX",
 		potionEffect:
@@ -58,9 +62,10 @@ const EffectsData = [
 	{
 		id: 4,
 		name: "Enervation",
-		counterEffect: "Weapon Critical",
+		counterEffect: 31,
 		summary: "Reduces critical damage",
-		hierarchy: "20",
+		compatibleEffects: [22, 8, 24, 16, 20, 10, 18, 27, 14, 6, 3, 29],
+		hierarchy: 20,
 		potionName: "Essence of Ravage Weapon Critical",
 		poisonName: "Enervating Poison IX",
 		potionEffect:
@@ -72,12 +77,14 @@ const EffectsData = [
 	{
 		id: 5,
 		name: "Entrapment",
-		counterEffect: "Unstoppable",
+		counterEffect: 28,
 		summary: "Stuns/immobilises the target",
-		hierarchy: "29",
+		compatibleEffects: [18, 19, 20, 21, 25, 31],
+		hierarchy: 29,
 		potionName: "Essence of Stun",
 		poisonName: "Entrapping Poison IX",
-		potionEffect: "<span class='text-purple-400'>Stuns</span> for 15.6 seconds. (45 second cooldown)",
+		potionEffect:
+			"<span class='text-purple-400'>Stuns</span> for 15.6 seconds. (45 second cooldown)",
 		poisonEffect:
 			"<span class='text-purple-400'>Immobilizes</span> your victim for 5.5 seconds. (10 second cooldown)",
 		src: "/images/effects/Entrapment.png",
@@ -85,9 +92,10 @@ const EffectsData = [
 	{
 		id: 6,
 		name: "Fracture",
-		counterEffect: "Increase Armor",
+		counterEffect: 10,
 		summary: "Reduces physical resistance",
-		hierarchy: "27",
+		compatibleEffects: [13, 23, 31, 18, 20, 4, 3, 29],
+		hierarchy: 27,
 		potionName: "Essence of Ravage Armor",
 		poisonName: "Fracturing Poison IX",
 		potionEffect:
@@ -99,9 +107,10 @@ const EffectsData = [
 	{
 		id: 7,
 		name: "Gradual Ravage Health",
-		counterEffect: "Lingering Health",
+		counterEffect: 15,
 		summary: "Drains health over a duration",
-		hierarchy: "30",
+		compatibleEffects: [26, 25, 21, 20, 30, 29, 18, 17, 2],
+		hierarchy: 30,
 		potionName: "Essence of Creeping Ravage Health",
 		poisonName: "Gradual Ravage Health Poison IX",
 		potionEffect:
@@ -113,9 +122,10 @@ const EffectsData = [
 	{
 		id: 8,
 		name: "Heroism",
-		counterEffect: "Timidity",
+		counterEffect: 26,
 		summary: "Increases ultimate generation, inflicts healing absorption",
-		hierarchy: "24",
+		compatibleEffects: [30, 14, 29, 15, 21, 2, 22, 4, 24],
+		hierarchy: 24,
 		potionName: "Essence of Heroism",
 		poisonName: "Traumatic Poison IX",
 		potionEffect:
@@ -127,9 +137,10 @@ const EffectsData = [
 	{
 		id: 9,
 		name: "Hindrance",
-		counterEffect: "Speed",
+		counterEffect: 24,
 		summary: "Reduces movement speed",
-		hierarchy: "7",
+		compatibleEffects: [12, 30, 2, 20, 16, 21, 14, 15, 31, 3, 28],
+		hierarchy: 7,
 		potionName: "Essence of Slow",
 		poisonName: "Hindering Poison IX",
 		potionEffect:
@@ -141,9 +152,10 @@ const EffectsData = [
 	{
 		id: 10,
 		name: "Increase Armor",
-		counterEffect: "Fracture",
+		counterEffect: 6,
 		summary: "Alters physical resistance",
-		hierarchy: "12",
+		compatibleEffects: [0, 17, 29, 16, 20, 4, 21, 23, 12, 2],
+		hierarchy: 12,
 		potionName: "Essence of Armor",
 		poisonName: "Resolve-Draining Poison IX",
 		potionEffect:
@@ -155,9 +167,10 @@ const EffectsData = [
 	{
 		id: 11,
 		name: "Increase Spell Power",
-		counterEffect: "Cowardice",
+		counterEffect: 1,
 		summary: "Alters spell power",
-		hierarchy: "26",
+		compatibleEffects: [22, 18, 3, 0, 25, 19],
+		hierarchy: 26,
 		potionName: "Essence of Spell Power",
 		poisonName: "Sorcery-Draining Poison IX",
 		potionEffect:
@@ -169,9 +182,10 @@ const EffectsData = [
 	{
 		id: 12,
 		name: "Increase Spell Resist",
-		counterEffect: "Breach",
+		counterEffect: 0,
 		summary: "Alters spell resistance",
-		hierarchy: "13",
+		compatibleEffects: [21, 1, 22, 9, 30, 2, 10, 17, 19, 3],
+		hierarchy: 13,
 		potionName: "Essence of Spell Protection",
 		poisonName: "Ward-Draining Poison IX",
 		potionEffect:
@@ -183,9 +197,10 @@ const EffectsData = [
 	{
 		id: 13,
 		name: "Increase Weapon Power",
-		counterEffect: "Maim",
+		counterEffect: 16,
 		summary: "Alters physical power",
-		hierarchy: "25",
+		compatibleEffects: [23, 18, 24, 6, 31, 20],
+		hierarchy: 25,
 		potionName: "Essence of Weapon Power",
 		poisonName: "Brutality-Draining Poison IX",
 		potionEffect:
@@ -197,13 +212,15 @@ const EffectsData = [
 	{
 		id: 14,
 		name: "Invisible",
-		counterEffect: "Detection",
+		counterEffect: 3,
 		summary: "Lets you vanish, or marks your victim",
-		hierarchy: "9",
+		compatibleEffects: [
+			19, 1, 21, 8, 30, 29, 25, 24, 28, 18, 27, 4, 9, 15, 2,
+		],
+		hierarchy: 9,
 		potionName: "Essence of Invisibility",
 		poisonName: "Conspicuous Poison IX",
-		potionEffect:
-			"Vanish for 15.7 seconds. (45 second cooldown)",
+		potionEffect: "Vanish for 15.7 seconds. (45 second cooldown)",
 		poisonEffect:
 			"Marks your victim, permitting you to see them while stealthed for 10.5 seconds. (10 second cooldown)",
 		src: "/images/effects/Invisible.png",
@@ -211,9 +228,10 @@ const EffectsData = [
 	{
 		id: 15,
 		name: "Lingering Health",
-		counterEffect: "Gradual Ravage Health",
+		counterEffect: 7,
 		summary: "Restores health over a duration",
-		hierarchy: "10",
+		compatibleEffects: [21, 27, 29, 8, 2, 24, 17, 19, 30, 9, 14],
+		hierarchy: 10,
 		potionName: "Essence of Lingering Health",
 		poisonName: "Gradual Health Drain Poison IX",
 		potionEffect:
@@ -225,9 +243,10 @@ const EffectsData = [
 	{
 		id: 16,
 		name: "Maim",
-		counterEffect: "Increase Weapon Power",
+		counterEffect: 13,
 		summary: "Reduces damage output",
-		hierarchy: "22",
+		compatibleEffects: [20, 10, 4, 21, 9, 23],
+		hierarchy: 22,
 		potionName: "Essence of Ravage Weapon Power",
 		poisonName: "Maiming Poison IX",
 		potionEffect:
@@ -239,9 +258,10 @@ const EffectsData = [
 	{
 		id: 17,
 		name: "Protection",
-		counterEffect: "Vulnerability",
+		counterEffect: 30,
 		summary: "Reduces damage taken",
-		hierarchy: "11",
+		compatibleEffects: [0, 10, 29, 12, 2, 18, 7, 15, 24, 26, 22],
+		hierarchy: 11,
 		potionName: "Essence of Protection",
 		poisonName: "Protection-Reversing Poison IX",
 		potionEffect:
@@ -253,9 +273,12 @@ const EffectsData = [
 	{
 		id: 18,
 		name: "Ravage Health",
-		counterEffect: "Restore Health",
+		counterEffect: 21,
 		summary: "Drains health over a duration",
-		hierarchy: "1",
+		compatibleEffects: [
+			23, 13, 24, 22, 11, 3, 19, 20, 5, 17, 7, 2, 27, 4, 14, 6, 26, 0,
+		],
+		hierarchy: 1,
 		potionName: "Essence of Ravage Health",
 		poisonName: "Damage Health Poison IX",
 		potionEffect:
@@ -267,9 +290,12 @@ const EffectsData = [
 	{
 		id: 19,
 		name: "Ravage Magicka",
-		counterEffect: "Restore Magicka",
+		counterEffect: 22,
 		summary: "Increases magicka costs",
-		hierarchy: "3",
+		compatibleEffects: [
+			1, 21, 14, 26, 23, 3, 18, 20, 5, 24, 30, 15, 0, 11, 12,
+		],
+		hierarchy: 3,
 		potionName: "Essence of Ravage Magicka",
 		poisonName: "Damage Magicka Poison IX",
 		potionEffect:
@@ -281,9 +307,10 @@ const EffectsData = [
 	{
 		id: 20,
 		name: "Ravage Stamina",
-		counterEffect: "Restore Stamina",
+		counterEffect: 23,
 		summary: "Increases stamina costs",
-		hierarchy: "4",
+		compatibleEffects: [18, 19, 5, 30, 7, 29, 16, 10, 4, 21, 9, 6, 13],
+		hierarchy: 4,
 		potionName: "Essence of Ravage Stamina",
 		poisonName: "Damage Stamina Poison IX",
 		potionEffect:
@@ -295,9 +322,14 @@ const EffectsData = [
 	{
 		id: 21,
 		name: "Restore Health",
-		counterEffect: "Ravage Health",
-		summary: "Restores/drains health immediately and over time, grants major fortitude",
-		hierarchy: "2",
+		counterEffect: 18,
+		summary:
+			"Restores/drains health immediately and over time, grants major fortitude",
+		compatibleEffects: [
+			19, 1, 14, 12, 22, 15, 27, 29, 23, 28, 26, 25, 7, 8, 2, 20, 16, 9, 10,
+			31, 5,
+		],
+		hierarchy: 2,
 		potionName: "Essence of Health",
 		poisonName: "Drain Health Poison IX",
 		potionEffect:
@@ -309,9 +341,13 @@ const EffectsData = [
 	{
 		id: 22,
 		name: "Restore Magicka",
-		counterEffect: "Ravage Magicka",
-		summary: "Restores/drains magicka immediately and over time, grants major intellect",
-		hierarchy: "18",
+		counterEffect: 19,
+		summary:
+			"Restores/drains magicka immediately and over time, grants major intellect",
+		compatibleEffects: [
+			12, 21, 1, 23, 28, 11, 18, 3, 4, 8, 24, 0, 25, 26, 17,
+		],
+		hierarchy: 18,
 		potionName: "Essence of Magicka",
 		poisonName: "Drain Magicka Poison IX",
 		potionEffect:
@@ -323,9 +359,11 @@ const EffectsData = [
 	{
 		id: 23,
 		name: "Restore Stamina",
-		counterEffect: "Ravage Stamina",
-		summary: "Restores/drains stamina immediately and over time, grants major endurance",
-		hierarchy: "19",
+		counterEffect: 20,
+		summary:
+			"Restores/drains stamina immediately and over time, grants major endurance",
+		compatibleEffects: [13, 18, 24, 26, 19, 3, 21, 22, 28, 6, 31, 10, 16],
+		hierarchy: 19,
 		potionName: "Essence of Stamina",
 		poisonName: "Drain Stamina Poison IX",
 		potionEffect:
@@ -337,9 +375,10 @@ const EffectsData = [
 	{
 		id: 24,
 		name: "Speed",
-		counterEffect: "Hindrance",
+		counterEffect: 9,
 		summary: "Alters movement speed",
-		hierarchy: "6",
+		compatibleEffects: [23, 13, 18, 22, 4, 8, 25, 14, 28, 15, 29, 17, 19, 30],
+		hierarchy: 6,
 		potionName: "Essence of Speed",
 		poisonName: "Speed-Draining Poison IX",
 		potionEffect:
@@ -351,9 +390,10 @@ const EffectsData = [
 	{
 		id: 25,
 		name: "Spell Critical",
-		counterEffect: "Uncertainty",
+		counterEffect: 27,
 		summary: "Alters spell critical",
-		hierarchy: "14",
+		compatibleEffects: [26, 7, 21, 11, 22, 0, 24, 14, 28, 31, 5],
+		hierarchy: 14,
 		potionName: "Essence of Spell Critical",
 		poisonName: "Prophecy-Draining Poison IX",
 		potionEffect:
@@ -365,9 +405,10 @@ const EffectsData = [
 	{
 		id: 26,
 		name: "Timidity",
-		counterEffect: "Heroism",
+		counterEffect: 8,
 		summary: "Removes generated ultimate",
-		hierarchy: "32",
+		compatibleEffects: [19, 23, 3, 25, 7, 21, 18, 22, 17],
+		hierarchy: 32,
 		potionName: "Essence of Timidity",
 		poisonName: "Timidity Poison IX",
 		potionEffect:
@@ -379,9 +420,10 @@ const EffectsData = [
 	{
 		id: 27,
 		name: "Uncertainty",
-		counterEffect: "Spell Critical",
+		counterEffect: 25,
 		summary: "Reduces critical chance rate",
-		hierarchy: "31",
+		compatibleEffects: [21, 15, 29, 18, 4, 14],
+		hierarchy: 31,
 		potionName: "Essence of Ravage Spell Crit",
 		poisonName: "Uncertainty Poison IX",
 		potionEffect:
@@ -393,9 +435,10 @@ const EffectsData = [
 	{
 		id: 28,
 		name: "Unstoppable",
-		counterEffect: "Entrapment",
+		counterEffect: 5,
 		summary: "Grants crowd control immunity, immobilises",
-		hierarchy: "16",
+		compatibleEffects: [21, 22, 23, 25, 24, 14, 31, 9, 3],
+		hierarchy: 16,
 		potionName: "Essence of Immovability",
 		poisonName: "Escapist's Poison IX",
 		potionEffect:
@@ -407,9 +450,10 @@ const EffectsData = [
 	{
 		id: 29,
 		name: "Vitality",
-		counterEffect: "Defile",
+		counterEffect: 2,
 		summary: "Increases healing taken",
-		hierarchy: "5",
+		compatibleEffects: [0, 10, 17, 21, 15, 27, 8, 30, 14, 20, 7, 24, 6, 4, 3],
+		hierarchy: 5,
 		potionName: "Essence of Vitality",
 		poisonName: "Vitality-Draining Poison IX",
 		potionEffect:
@@ -421,9 +465,10 @@ const EffectsData = [
 	{
 		id: 30,
 		name: "Vulnerability",
-		counterEffect: "Protection",
+		counterEffect: 17,
 		summary: "Increases damage taken",
-		hierarchy: "17",
+		compatibleEffects: [12, 9, 2, 8, 14, 29, 20, 7, 19, 24, 15],
+		hierarchy: 17,
 		potionName: "Essence of Vulnerability",
 		poisonName: "Vulnerability Poison IX",
 		potionEffect:
@@ -435,9 +480,10 @@ const EffectsData = [
 	{
 		id: 31,
 		name: "Weapon Critical",
-		counterEffect: "Enervation",
+		counterEffect: 4,
 		summary: "Alters weapon critical",
-		hierarchy: "15",
+		compatibleEffects: [13, 23, 6, 21, 25, 5, 9, 3, 28],
+		hierarchy: 15,
 		potionName: "Essence of Weapon Crit",
 		poisonName: "Savagery-Draining Poison IX",
 		potionEffect:

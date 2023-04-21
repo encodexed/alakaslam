@@ -1,7 +1,10 @@
+import IngredientsData from "@/IngredientsData";
 import EffectsData from "../../EffectsData";
 import AddButton from "../UI/AddButton";
 import DisabledAddButton from "../UI/DisabledAddButton";
 import Icon from "../UI/Icon";
+import getEffects from "@/functions/getEffects";
+import removeDuplicates from "@/functions/removeDuplicates";
 
 export default function Effect(props) {
 	const effect = EffectsData[props.id];
