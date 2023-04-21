@@ -12,6 +12,9 @@ module.exports = {
 				pangolin: ["Pangolin", "sans-serif"], // used in pages/eso/alchemy_assistant
 			},
 		},
+		minHeight: {
+			'72': '288px',
+		 }
 	},
 	plugins: [],
 };

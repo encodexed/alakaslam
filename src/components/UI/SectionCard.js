@@ -4,14 +4,21 @@ import SectionTabs from "./SectionTabs";
 export default function SectionCard(props) {
    const [isSectionShown, setIsSectionShown] = useState(true);
 
-   const toggleSectionShown = () => {
+	const toggleSectionShown = () => {
+		const num = isSectionShown ? -1 : 1;
+		props.renderControl(num);
 		setIsSectionShown((prevState) => {
 			return !prevState;
 		})
-   }
-   
-   const showStyle = isSectionShown ? 'h-96 overflow-scroll' : 'h-7 overflow-hidden';
-   const style = `${showStyle} max-w-xl pt-0 m-6 bg-white border-2 border-black rounded-md shadow-md shadow-black/30`;
+	}
+	
+	let height = 'min-h-72';
+	if (!isSectionShown) {
+		height = 'max-h-7';
+	}
+
+   const showStyle = isSectionShown ? 'overflow-scroll' : 'overflow-hidden';
+   const style = `${height} ${showStyle} flex-1 pt-0 m-6 bg-white border-2 border-black rounded-md shadow-md shadow-black/30`;
 
 	return (
 		<div className={style}>

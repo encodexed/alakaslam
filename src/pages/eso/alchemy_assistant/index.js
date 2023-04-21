@@ -12,7 +12,7 @@ export default function Home() {
 	};
 	
 	return (
-		<main className='flex flex-col h-screen font-pangolin bg-gradient-to-b from-sky-200 via-orange-200 to-indigo-200'>
+		<main className='h-screen font-pangolin bg-gradient-to-b from-sky-200 via-orange-200 to-indigo-200'>
 			{showInfo && <Info toggleShowInfo={toggleShowInfo} />}
 			<Content toggleShowInfo={toggleShowInfo} />
 		</main>
