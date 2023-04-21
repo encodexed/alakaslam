@@ -1,38 +1,50 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import PotionEffects from "./Effects/PotionEffects";
 import Ingredients from "./Ingredients/Ingredients";
 import Version from "./Version";
 import SectionCard from "./UI/SectionCard";
 
 export default function Content(props) {
-	const [selectionMode, setSelectionMode] = useState("effects");
+	// Controls which mode is being viewed, selected by clicking on tabs.
+	const [selectionMode, setSelectionMode] = useState("ingredients");
+	// Controls window height behaviour in the SectionCard component.
 	const [sectionsShown, setSectionsShown] = useState(2);
+	// An array of IDs relating to either ingredients or effects, as selected by the user. Maximum 3 selections.
+	const [userSelections, setUserSelections] = useState([]);
+
+	const selectOne = (id) => {
+		if (userSelections.length < 3) {
+			setUserSelections([...userSelections, id]);
+		}
+	};
+
+	const deselectOne = (id) => {
+		const newSelections = userSelections.filter(
+			(selection) => selection !== id
+		);
+		setUserSelections([...newSelections]);
+	};
 
 	const ingredientsClickHandler = () => {
 		setSelectionMode("ingredients");
+		setUserSelections([]);
 	};
 
 	const effectsClickHandler = () => {
 		setSelectionMode("effects");
+		setUserSelections([]);
 	};
 
+	// Called from the SectionCard component.
 	const adjustSectionsShown = (num) => {
 		setSectionsShown((prevState) => {
 			return prevState + num;
 		});
 	};
 
-	const selectedHeader =
-		selectionMode === "ingredients"
-			? "Selected Ingredients"
-			: "Selected Effects";
-
 	return (
 		<div className='flex flex-col max-w-3xl max-h-screen mx-auto'>
 			<div className='mt-2'>
-				<h1 className='my-4 text-3xl text-center underline'>
-					ESO Alchemy Assistant
-				</h1>
 				<Version toggleShowInfo={props.toggleShowInfo} />
 			</div>
 
@@ -59,10 +71,18 @@ export default function Content(props) {
 				renderControl={adjustSectionsShown}
 			>
 				{selectionMode === "effects" && (
-					<PotionEffects selectionMode={selectionMode} />
+					<PotionEffects
+						selectedIDs={userSelections}
+						selectOne={selectOne}
+						deselectOne={deselectOne}
+					/>
 				)}
 				{selectionMode === "ingredients" && (
-					<Ingredients selectionMode={selectionMode} />
+					<Ingredients
+						selectedIDs={userSelections}
+						selectOne={selectOne}
+						deselectOne={deselectOne}
+					/>
 				)}
 			</SectionCard>
 		</div>

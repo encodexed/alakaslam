@@ -32,16 +32,15 @@ export default function PotionEffects(props) {
 	return (
 		<>
 			<div className='sticky z-10 top-[22px] xs:top-[26px]'>
-				<SelectedEffects selectedIDs={selectedEffectsIDs} />
+				<SelectedEffects selectedIDs={props.selectedIDs} deselectEffect={props.deselectOne} />
 			</div>
 			{EffectsData.map((effect) => {
-				if (!selectedEffectsIDs.includes(effect.id)) {
+				if (!props.selectedIDs.includes(effect.id)) {
 					return (
 						<Effect
 							key={"z" + effect.id}
 							id={effect.id}
-							selectEffect={selectEffect}
-							deselectEffect={deselectEffect}
+							selectEffect={props.selectOne}
 							isDisabled={disableAddButtons}
 						/>
 					);

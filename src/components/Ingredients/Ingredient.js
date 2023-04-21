@@ -13,25 +13,10 @@ export default function Ingredient(props) {
 
 	const incompatibleStyle =
 		"sm:text-sm leading-none sm:leading-none text-xs text-center text-slate-500";
-	const compatibleStyle =
-		"sm:text-sm leading-none sm:leading-none text-xs text-center text-blue-500";
 	let style1 = incompatibleStyle;
 	let style2 = incompatibleStyle;
 	let style3 = incompatibleStyle;
 	let style4 = incompatibleStyle;
-
-	if (props.effects.includes(effect1)) {
-		style1 = compatibleStyle;
-	}
-	if (props.effects.includes(effect2)) {
-		style2 = compatibleStyle;
-	}
-	if (props.effects.includes(effect3)) {
-		style3 = compatibleStyle;
-	}
-	if (props.effects.includes(effect4)) {
-		style4 = compatibleStyle;
-	}
 
 	return (
 		<>
@@ -80,3 +65,20 @@ export default function Ingredient(props) {
 		</>
 	);
 }
+
+
+// const compatibleStyle =
+// "sm:text-sm leading-none sm:leading-none text-xs text-center text-blue-500";
+
+	// if (props.effects.includes(effect1)) {
+	// 	style1 = compatibleStyle;
+	// }
+	// if (props.effects.includes(effect2)) {
+	// 	style2 = compatibleStyle;
+	// }
+	// if (props.effects.includes(effect3)) {
+	// 	style3 = compatibleStyle;
+	// }
+	// if (props.effects.includes(effect4)) {
+	// 	style4 = compatibleStyle;
+	// }

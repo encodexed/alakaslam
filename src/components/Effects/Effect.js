@@ -20,10 +20,10 @@ export default function Effect(props) {
 				<h3 className='text-sm text-center sm:text-base'>{name}</h3>
 			</div>
 			<div className='my-auto flex-0'>
-				{!props.isSelected && !props.isDisabled && (
+				{!props.isDisabled && (
 					<AddButton onClick={selectEffect} />
 				)}
-				{!props.isSelected && props.isDisabled && <DisabledAddButton />}
+				{props.isDisabled && <DisabledAddButton />}
 			</div>
 			<div className='flex-1 mx-2 my-auto'>
 				<p className='text-xs leading-none text-center sm:text-sm text-slate-500'>

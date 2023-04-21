@@ -18,7 +18,7 @@ export default function SectionCard(props) {
 	}
 
    const showStyle = isSectionShown ? 'overflow-scroll' : 'overflow-hidden';
-   const style = `${height} ${showStyle} flex-1 pt-0 m-6 bg-white border-2 border-black rounded-md shadow-md shadow-black/30`;
+   const style = `${height} ${showStyle} flex-1 pt-0 mx-6 my-2 bg-white border-2 border-black rounded-md shadow-md shadow-black/30`;
 
 	return (
 		<div className={style}>

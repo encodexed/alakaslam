@@ -51,18 +51,6 @@ export default function SelectedIngredients(props) {
 	// }
 	// }, [props.effects]);
 
-	const deselectHandler1 = () => {
-		props.deselectIngredient(ingredient1.id);
-	};
-
-	const deselectHandler2 = () => {
-		props.deselectIngredient(ingredient2.id);
-	};
-
-	const deselectHandler3 = () => {
-		props.deselectIngredient(ingredient3.id);
-	};
-
 	const borderStyle = props.selectedIDs.length > 0 ? 'border-b-2 border-black' : '';
 	const style = `flex flex-col w-full ${borderStyle}`;
 
@@ -74,7 +62,7 @@ export default function SelectedIngredients(props) {
 						key={"a" + props.selectedIDs[0]}
 						matchedEffects={matchedEffects}
 						ingredientID={props.selectedIDs[0]}
-						deselectHandler={deselectHandler1}
+						deselectIngredient={props.deselectIngredient}
 						counterEffects={counterEffects}
 					/>
 				)}
@@ -84,7 +72,7 @@ export default function SelectedIngredients(props) {
 						key={"a" + props.selectedIDs[1]}
 						matchedEffects={matchedEffects}
 						ingredientID={props.selectedIDs[1]}
-						deselectHandler={deselectHandler2}
+						deselectIngredient={props.deselectIngredient}
 						counterEffects={counterEffects}
 					/>
 				)}
@@ -94,7 +82,7 @@ export default function SelectedIngredients(props) {
 						key={"a" + props.selectedIDs[2]}
 						matchedEffects={matchedEffects}
 						ingredientID={props.selectedIDs[2]}
-						deselectHandler={deselectHandler3}
+						deselectIngredient={props.deselectIngredient}
 						counterEffects={counterEffects}
 					/>
 				)}

@@ -57,6 +57,10 @@ export default function SelectedIngredient(props) {
 		shadow4 = counterEffectShadowStyle;
 	}
 
+	const deselectHandler = () => {
+		props.deselectIngredient(id);
+	};
+
 	return (
 		<>
 			<div className='hidden px-2 border-b border-black xs:flex bg-slate-100'>
@@ -67,7 +71,7 @@ export default function SelectedIngredient(props) {
 					<h3 className='text-sm text-center sm:text-base'>{name}</h3>
 				</div>
 				<div className='my-auto flex-0'>
-					<RemoveButton onClick={props.deselectHandler} />
+					<RemoveButton onClick={deselectHandler} />
 				</div>
 				<div className='flex-1 my-auto ml-2'>
 					<p className={style1} style={shadow1}>
@@ -94,7 +98,7 @@ export default function SelectedIngredient(props) {
 					<h3 className='text-sm text-center sm:text-base'>{name}</h3>
 				</div>
 				<div className='my-auto flex-0'>
-					<RemoveButton onClick={props.deselectHandler} />
+					<RemoveButton onClick={deselectHandler} />
 				</div>
 				<div className='flex-1 my-1 ml-1 truncate'>
 					<p className={style1}>{effect1}</p>
