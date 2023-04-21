@@ -14,7 +14,7 @@ export default function SectionCard(props) {
 	
 	let height = 'min-h-72';
 	if (!isSectionShown) {
-		height = 'max-h-7';
+		height = 'min-h-7 max-h-7';
 	}
 
    const showStyle = isSectionShown ? 'overflow-scroll' : 'overflow-hidden';

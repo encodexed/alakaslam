@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx}",
@@ -12,9 +15,15 @@ module.exports = {
 				pangolin: ["Pangolin", "sans-serif"], // used in pages/eso/alchemy_assistant
 			},
 		},
+		screens: {
+			'xs': "525px",
+			...defaultTheme.screens,
+		},
 		minHeight: {
-			'72': '288px',
-		 }
+			72: "288px",
+			7: "28px",
+			780: "780px"
+		},
 	},
 	plugins: [],
 };

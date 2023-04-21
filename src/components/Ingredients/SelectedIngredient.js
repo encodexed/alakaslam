@@ -58,32 +58,51 @@ export default function SelectedIngredient(props) {
 	}
 
 	return (
-		<div className='flex px-2 border-b border-black bg-slate-100'>
-			<div>
-				<Icon src={src} />
+		<>
+			<div className='hidden px-2 border-b border-black xs:flex bg-slate-100'>
+				<div>
+					<Icon src={src} />
+				</div>
+				<div className='flex-1 w-40 my-auto justify-content-center'>
+					<h3 className='text-sm text-center sm:text-base'>{name}</h3>
+				</div>
+				<div className='my-auto flex-0'>
+					<RemoveButton onClick={props.deselectHandler} />
+				</div>
+				<div className='flex-1 my-auto ml-2'>
+					<p className={style1} style={shadow1}>
+						{effect1}
+					</p>
+					<p className={style2} style={shadow2}>
+						{effect2}
+					</p>
+				</div>
+				<div className='flex-1 my-auto'>
+					<p className={style3} style={shadow3}>
+						{effect3}
+					</p>
+					<p className={style4} style={shadow4}>
+						{effect4}
+					</p>
+				</div>
 			</div>
-			<div className='flex-1 w-40 my-auto justify-content-center'>
-				<h3 className='text-sm text-center sm:text-base'>{name}</h3>
+			<div className='flex px-2 border-b border-black bg-slate-100 xs:hidden'>
+				<div>
+					<Icon src={src} />
+				</div>
+				<div className='flex-1 my-auto justify-content-center'>
+					<h3 className='text-sm text-center sm:text-base'>{name}</h3>
+				</div>
+				<div className='my-auto flex-0'>
+					<RemoveButton onClick={props.deselectHandler} />
+				</div>
+				<div className='flex-1 my-1 ml-1 truncate'>
+					<p className={style1}>{effect1}</p>
+					<p className={style2}>{effect2}</p>
+					<p className={style3}>{effect3}</p>
+					<p className={style4}>{effect4}</p>
+				</div>
 			</div>
-			<div className='my-auto flex-0'>
-				<RemoveButton onClick={props.deselectHandler} />
-			</div>
-			<div className='flex-1 my-auto ml-2'>
-				<p className={style1} style={shadow1}>
-					{effect1}
-				</p>
-				<p className={style2} style={shadow2}>
-					{effect2}
-				</p>
-			</div>
-			<div className='flex-1 my-auto'>
-				<p className={style3} style={shadow3}>
-					{effect3}
-				</p>
-				<p className={style4} style={shadow4}>
-					{effect4}
-				</p>
-			</div>
-		</div>
+		</>
 	);
 }

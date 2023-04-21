@@ -4,14 +4,17 @@ import IngredientsData from "../../IngredientsData";
 import DisabledAddButton from "../UI/DisabledAddButton";
 
 export default function Ingredient(props) {
-	const { name, effect1, effect2, effect3, effect4, src } = IngredientsData[props.id];
+	const { name, effect1, effect2, effect3, effect4, src } =
+		IngredientsData[props.id];
 
 	const addSelectionHandler = () => {
 		props.selectIngredient(props.id);
 	};
 
-	const incompatibleStyle = "sm:text-sm leading-none sm:leading-none text-xs text-center text-slate-500";
-	const compatibleStyle = "sm:text-sm leading-none sm:leading-none text-xs text-center text-blue-500";
+	const incompatibleStyle =
+		"sm:text-sm leading-none sm:leading-none text-xs text-center text-slate-500";
+	const compatibleStyle =
+		"sm:text-sm leading-none sm:leading-none text-xs text-center text-blue-500";
 	let style1 = incompatibleStyle;
 	let style2 = incompatibleStyle;
 	let style3 = incompatibleStyle;
@@ -31,27 +34,49 @@ export default function Ingredient(props) {
 	}
 
 	return (
-		<div className='flex px-2 border-b'>
-			<div>
-				<Icon src={src} />
+		<>
+			<div className='hidden px-2 border-b xs:flex'>
+				<div>
+					<Icon src={src} />
+				</div>
+				<div className='flex-1 w-40 my-auto justify-content-center'>
+					<h3 className='text-sm text-center sm:text-base'>{name}</h3>
+				</div>
+				<div className='my-auto flex-0'>
+					{!props.isDisabled && (
+						<AddButton onClick={addSelectionHandler} />
+					)}
+					{props.isDisabled && <DisabledAddButton />}
+				</div>
+				<div className='flex-1 my-auto ml-2'>
+					<p className={style1}>{effect1}</p>
+					<p className={style2}>{effect2}</p>
+				</div>
+				<div className='flex-1 my-auto'>
+					<p className={style3}>{effect3}</p>
+					<p className={style4}>{effect4}</p>
+				</div>
 			</div>
-			<div className='flex-1 w-40 my-auto justify-content-center'>
-				<h3 className='text-sm text-center sm:text-base'>{name}</h3>
+			<div className='flex px-2 border-b xs:hidden'>
+				<div>
+					<Icon src={src} />
+				</div>
+				<div className='flex-1 my-auto justify-content-center'>
+					<h3 className='text-sm text-center sm:text-base'>{name}</h3>
+				</div>
+				<div className='my-auto flex-0'>
+					{!props.isDisabled && (
+						<AddButton onClick={addSelectionHandler} />
+					)}
+					{props.isDisabled && <DisabledAddButton />}
+				</div>
+				<div className='flex-1 my-1 ml-1 truncate'>
+					<p className={style1}>{effect1}</p>
+					<p className={style2}>{effect2}</p>
+					<p className={style3}>{effect3}</p>
+					<p className={style4}>{effect4}</p>
+				</div>
 			</div>
-			<div className='my-auto flex-0'>
-				{!props.isDisabled && (
-					<AddButton onClick={addSelectionHandler} />
-				)}
-				{props.isDisabled && <DisabledAddButton />}
-			</div>
-			<div className='flex-1 my-auto ml-2'>
-				<p className={style1}>{effect1}</p>
-				<p className={style2}>{effect2}</p>
-			</div>
-			<div className='flex-1 my-auto'>
-				<p className={style3}>{effect3}</p>
-				<p className={style4}>{effect4}</p>
-			</div>
-		</div>
+		</>
 	);
 }
