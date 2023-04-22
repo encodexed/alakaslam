@@ -16,7 +16,11 @@ export default function Content(props) {
 	// If three ingredients/effects are selected, adding more is disabled.
 	const [disableAddButtons, setDisableAddButtons] = useState(false);
 	// Store matches and conflicts for helping display logic on ingredients tab.
-	const [matchesAndConflicts, setMatchesAndConflicts] = useState({});
+	const [matchesAndConflicts, setMatchesAndConflicts] = useState({
+		triples: [],
+		doubles: [],
+		conflicts: [],
+	});
 
 	useEffect(() => {
 		// Disable buttons in maximum allowed user selections reached
@@ -71,18 +75,21 @@ export default function Content(props) {
 
 			{selectionMode === "ingredients" && (
 				<SectionCard
-					tab1={"Expected Concoctions"}
+					tab1={"Outcome"}
 					renderInfo={sectionsShown}
 					renderControl={adjustSectionsShown}
 				>
-					<IngredientResults selectedIDs={userSelections} />
+					<IngredientResults
+						selectedCount={userSelections.length}
+						matchesAndConflicts={matchesAndConflicts}
+					/>
 				</SectionCard>
 			)}
 
 			<SectionCard
-				tab1={"Show Ingredients"}
+				tab1={"Choose Ingredients"}
 				tabClick1={ingredientsClickHandler}
-				tab2={"Show Effects"}
+				tab2={"Choose Effects"}
 				tabClick2={effectsClickHandler}
 				renderInfo={sectionsShown}
 				renderControl={adjustSectionsShown}
