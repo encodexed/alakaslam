@@ -33,7 +33,7 @@ export default function IngredientResults(props) {
 	}, [props.matchesAndConflicts, props.selectedCount]);
 
 	return (
-		<>
+		<div className='p-2'>
 			<DisplayConflicts conflicts={props.matchesAndConflicts.conflicts} />
 			<div className='flex'>
 				<div className='flex-1'>
@@ -92,6 +92,6 @@ export default function IngredientResults(props) {
 					</ConcoctionCard>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
