@@ -8,7 +8,7 @@ export default function ConcoctionDescription(props) {
 					dangerouslySetInnerHTML={{
 						__html: EffectsData[props.effectID].potionEffect,
 					}}
-					className='text-xs leading-none sm:text-sm sm:leading-none'
+					className='text-sm leading-none'
 				/>
 			</div>
 		);
@@ -19,7 +19,7 @@ export default function ConcoctionDescription(props) {
 					dangerouslySetInnerHTML={{
 						__html: EffectsData[props.effectID].poisonEffect,
 					}}
-					className='text-xs leading-none sm:text-sm sm:leading-none'
+					className='text-sm leading-none'
 				/>
 			</div>
 		);

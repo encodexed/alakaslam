@@ -6,9 +6,9 @@ import { useState, useEffect } from "react";
 import removeDuplicates from "@/functions/removeDuplicates";
 
 const incompatibleStyle =
-	"sm:text-sm leading-none sm:leading-none text-xs text-center text-slate-500";
+	"xxs:text-sm leading-none xxs:leading-none text-xs text-center text-slate-500";
 const compatibleStyle =
-	"sm:text-sm leading-none sm:leading-none text-xs text-center text-green-500";
+	"xxs:text-sm leading-none xxs:leading-none text-xs text-center text-green-500";
 
 export default function Ingredient(props) {
 	const [styles, setStyles] = useState([]);

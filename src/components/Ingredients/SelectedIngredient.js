@@ -5,11 +5,11 @@ import { useState, useEffect } from "react";
 import getIDsFromNames from "@/functions/getIDsFromNames";
 
 const unmatchedStyle =
-	"sm:text-sm text-xs leading-none sm:leading-none text-center text-slate-400";
+	"xxs:text-sm text-xs leading-none xxs:leading-none text-center text-slate-400";
 const matchedStyle =
-	"sm:text-sm text-xs leading-none sm:leading-none text-center text-purple-500";
+	"xxs:text-sm text-xs leading-none xxs:leading-none text-center text-purple-500";
 const counterEffectStyle =
-	"sm:text-sm text-xs leading-none sm:leading-none text-center text-red-500";
+	"xxs:text-sm text-xs leading-none xxs:leading-none text-center text-red-500";
 
 export default function SelectedIngredient(props) {
 	const [styles, setStyles] = useState([]);
