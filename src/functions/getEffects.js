@@ -1,4 +1,4 @@
-// Returns an array of effects that an array of ingredients possesses
+// Returns an array of effects names that an array of ingredients IDs possesses, without filtering duplicates.
 import IngredientsData from "@/IngredientsData";
 
 export default function getEffects(ingredientsIDs) {

@@ -1,8 +1,10 @@
-import { use, useState } from "react";
+import { useState, useEffect } from "react";
 import PotionEffects from "./Effects/PotionEffects";
 import Ingredients from "./Ingredients/Ingredients";
 import Version from "./Version";
 import SectionCard from "./UI/SectionCard";
+import IngredientResults from "./Ingredients/IngredientResults";
+import getMatchesAndConflicts from "@/functions/getMatchesAndConflicts";
 
 export default function Content(props) {
 	// Controls which mode is being viewed, selected by clicking on tabs.
@@ -13,23 +15,35 @@ export default function Content(props) {
 	const [userSelections, setUserSelections] = useState([]);
 	// If three ingredients/effects are selected, adding more is disabled.
 	const [disableAddButtons, setDisableAddButtons] = useState(false);
+	// Store matches and conflicts for helping display logic on ingredients tab.
+	const [matchesAndConflicts, setMatchesAndConflicts] = useState({});
+
+	useEffect(() => {
+		// Disable buttons in maximum allowed user selections reached
+		const maxChoices = userSelections.length >= 3;
+		setDisableAddButtons(maxChoices);
+		// Get new matches and conflicts of selected ingredients.
+		if (selectionMode === "ingredients") {
+			const matchesConflicts = getMatchesAndConflicts(userSelections);
+			setMatchesAndConflicts({
+				triples: matchesConflicts.triples,
+				doubles: matchesConflicts.doubles,
+				conflicts: matchesConflicts.conflicts,
+			});
+		}
+	}, [selectionMode, userSelections]);
 
 	const selectOne = (id) => {
-		if (userSelections.length === 2) {
-			setDisableAddButtons(true);
-		}
 		if (userSelections.length < 3) {
 			setUserSelections([...userSelections, id]);
 		}
 	};
 
 	const deselectOne = (id) => {
-		setDisableAddButtons(false);
 		const newSelections = userSelections.filter(
 			(selection) => selection !== id
 		);
 		setUserSelections([...newSelections]);
-		
 	};
 
 	const ingredientsClickHandler = () => {
@@ -55,19 +69,15 @@ export default function Content(props) {
 				<Version toggleShowInfo={props.toggleShowInfo} />
 			</div>
 
-			<SectionCard
-				tab1={"Expected Results"}
-				renderInfo={sectionsShown}
-				renderControl={adjustSectionsShown}
-			>
-				<div>
-					Results!
-					<br />
-					More results
-					<br />
-					Even more results{" "}
-				</div>
-			</SectionCard>
+			{selectionMode === "ingredients" && (
+				<SectionCard
+					tab1={"Expected Concoctions"}
+					renderInfo={sectionsShown}
+					renderControl={adjustSectionsShown}
+				>
+					<IngredientResults selectedIDs={userSelections} />
+				</SectionCard>
+			)}
 
 			<SectionCard
 				tab1={"Show Ingredients"}
@@ -77,16 +87,17 @@ export default function Content(props) {
 				renderInfo={sectionsShown}
 				renderControl={adjustSectionsShown}
 			>
-				{selectionMode === "effects" && (
-					<PotionEffects
+				{selectionMode === "ingredients" && (
+					<Ingredients
 						selectedIDs={userSelections}
+						matchesAndConflicts={matchesAndConflicts}
 						selectOne={selectOne}
 						deselectOne={deselectOne}
 						disableAddButtons={disableAddButtons}
 					/>
 				)}
-				{selectionMode === "ingredients" && (
-					<Ingredients
+				{selectionMode === "effects" && (
+					<PotionEffects
 						selectedIDs={userSelections}
 						selectOne={selectOne}
 						deselectOne={deselectOne}

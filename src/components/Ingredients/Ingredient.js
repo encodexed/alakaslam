@@ -5,7 +5,6 @@ import DisabledAddButton from "../UI/DisabledAddButton";
 import { useState, useEffect } from "react";
 import removeDuplicates from "@/functions/removeDuplicates";
 
-const compatibleShadow = { textShadow: "green 0 0 0.5px" };
 const incompatibleStyle =
 	"sm:text-sm leading-none sm:leading-none text-xs text-center text-slate-500";
 const compatibleStyle =
@@ -13,32 +12,25 @@ const compatibleStyle =
 
 export default function Ingredient(props) {
 	const [styles, setStyles] = useState([]);
-	const [shadows, setShadows] = useState([]);
 	const { name, effects, src } = IngredientsData[props.id];
 
 	useEffect(() => {
 		const uniqueEffects = removeDuplicates(props.effects);
 		// Analyse what effects on this ingredient match effects of selected ingredients, and visualise them
 		let newStyles = [];
-		let newShadows = [];
 		effects.forEach((effect) => {
 			if (uniqueEffects.includes(effect)) {
 				newStyles.push(compatibleStyle);
-				newShadows.push(compatibleShadow);
 			} else {
 				newStyles.push(incompatibleStyle);
-				newShadows.push({});
 			}
 		});
 		setStyles([...newStyles]);
-		setShadows([...newShadows]);
 	}, [props.effects, effects]);
 
 	const addSelectionHandler = () => {
 		props.selectIngredient(props.id);
 	};
-
-	
 
 	return (
 		<>
@@ -57,20 +49,12 @@ export default function Ingredient(props) {
 					{props.isDisabled && <DisabledAddButton />}
 				</div>
 				<div className='flex-1 my-auto ml-2'>
-					<p className={styles[0]} style={shadows[0]}>
-						{effects[0]}
-					</p>
-					<p className={styles[1]} style={shadows[1]}>
-						{effects[1]}
-					</p>
+					<p className={styles[0]}>{effects[0]}</p>
+					<p className={styles[1]}>{effects[1]}</p>
 				</div>
 				<div className='flex-1 my-auto'>
-					<p className={styles[2]} style={shadows[2]}>
-						{effects[2]}
-					</p>
-					<p className={styles[3]} style={shadows[3]}>
-						{effects[3]}
-					</p>
+					<p className={styles[2]}>{effects[2]}</p>
+					<p className={styles[3]}>{effects[3]}</p>
 				</div>
 			</div>
 			{/* Output on extra-small screens */}
@@ -88,18 +72,10 @@ export default function Ingredient(props) {
 					{props.isDisabled && <DisabledAddButton />}
 				</div>
 				<div className='flex-1 my-1 ml-1 truncate'>
-					<p className={styles[0]} style={shadows[0]}>
-						{effects[0]}
-					</p>
-					<p className={styles[1]} style={shadows[1]}>
-						{effects[1]}
-					</p>
-					<p className={styles[2]} style={shadows[2]}>
-						{effects[2]}
-					</p>
-					<p className={styles[3]} style={shadows[3]}>
-						{effects[3]}
-					</p>
+					<p className={styles[0]}>{effects[0]}</p>
+					<p className={styles[1]}>{effects[1]}</p>
+					<p className={styles[2]}>{effects[2]}</p>
+					<p className={styles[3]}>{effects[3]}</p>
 				</div>
 			</div>
 		</>

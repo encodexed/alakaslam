@@ -37,6 +37,7 @@ export default function Ingredients(props) {
 				<SelectedIngredients
 					selectedIDs={props.selectedIDs}
 					deselectIngredient={props.deselectOne}
+					matchesAndConflicts={props.matchesAndConflicts}
 				/>
 			</div>
 			<div className='overflow-scroll'>

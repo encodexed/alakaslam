@@ -1,61 +1,48 @@
 import RemoveButton from "../UI/RemoveButton";
 import Icon from "../UI/Icon";
-import DisabledRemoveButton from "../UI/DisabledRemoveButton";
 import IngredientsData from "@/IngredientsData";
+import { useState, useEffect } from "react";
+import getIDsFromNames from "@/functions/getIDsFromNames";
+
+const unmatchedStyle =
+	"sm:text-sm text-xs leading-none sm:leading-none text-center text-slate-400";
+const matchedStyle =
+	"sm:text-sm text-xs leading-none sm:leading-none text-center text-purple-500";
+const counterEffectStyle =
+	"sm:text-sm text-xs leading-none sm:leading-none text-center text-red-500";
 
 export default function SelectedIngredient(props) {
-	const unmatchedStyle =
-		"sm:text-sm text-xs leading-none sm:leading-none text-center text-slate-500";
-	const matchedStyle =
-		"sm:text-sm text-xs leading-none sm:leading-none text-center text-purple-500";
-	const counterEffectStyle =
-		"sm:text-sm text-xs leading-none sm:leading-none text-center text-red-500";
-	const matchedShadowStyle = { textShadow: "purple 0 0 0.5px" };
-	const counterEffectShadowStyle = { textShadow: "red 0 0 0.5px" };
+	const [styles, setStyles] = useState([]);
+	const { id, name, effects, src } = IngredientsData[props.ingredientID];
 
-	const { id, name, effects, src } =
-		IngredientsData[props.ingredientID];
+	useEffect(() => {
+		// Display a visualisation of matching effects between ingredients, or conflicting effects.
+		let newStyles = [];
+		const effectsIDs = getIDsFromNames("effects", effects);
 
-	let shadow1, shadow2, shadow3, shadow4;
-	let style1 = unmatchedStyle;
-	let style2 = unmatchedStyle;
-	let style3 = unmatchedStyle;
-	let style4 = unmatchedStyle;
+		effectsIDs.forEach((id) => {
+			if (
+				props.matchesAndConflicts.triples.includes(id) ||
+				props.matchesAndConflicts.doubles.includes(id)
+			) {
+				newStyles.push(matchedStyle);
+			} else {
+				let conflicted = false;
+				for (let conflict of props.matchesAndConflicts.conflicts) {
+					if (conflict.counterID === id) {
+						newStyles.push(counterEffectStyle);
+						conflicted = true;
+						break;
+					}
+				}
+				if (!conflicted) {
+					newStyles.push(unmatchedStyle);
+				}
+			}
+		});
 
-	// Display matching effects
-	if (props.matchedEffects.includes(effects[0])) {
-		style1 = matchedStyle;
-		shadow1 = matchedShadowStyle;
-	}
-	if (props.matchedEffects.includes(effects[1])) {
-		style2 = matchedStyle;
-		shadow2 = matchedShadowStyle;
-	}
-	if (props.matchedEffects.includes(effects[2])) {
-		style3 = matchedStyle;
-		shadow3 = matchedShadowStyle;
-	}
-	if (props.matchedEffects.includes(effects[3])) {
-		style4 = matchedStyle;
-		shadow4 = matchedShadowStyle;
-	}
-	// Change style for counter effects
-	if (props.counterEffects.includes(effects[0])) {
-		style1 = counterEffectStyle;
-		shadow1 = counterEffectShadowStyle;
-	}
-	if (props.counterEffects.includes(effects[1])) {
-		style2 = counterEffectStyle;
-		shadow2 = counterEffectShadowStyle;
-	}
-	if (props.counterEffects.includes(effects[2])) {
-		style3 = counterEffectStyle;
-		shadow3 = counterEffectShadowStyle;
-	}
-	if (props.counterEffects.includes(effects[3])) {
-		style4 = counterEffectStyle;
-		shadow4 = counterEffectShadowStyle;
-	}
+		setStyles([...newStyles]);
+	}, [props.matchesAndConflicts, effects]);
 
 	const deselectHandler = () => {
 		props.deselectIngredient(id);
@@ -74,20 +61,12 @@ export default function SelectedIngredient(props) {
 					<RemoveButton onClick={deselectHandler} />
 				</div>
 				<div className='flex-1 my-auto ml-2'>
-					<p className={style1} style={shadow1}>
-						{effects[0]}
-					</p>
-					<p className={style2} style={shadow2}>
-						{effects[1]}
-					</p>
+					<p className={styles[0]}>{effects[0]}</p>
+					<p className={styles[1]}>{effects[1]}</p>
 				</div>
 				<div className='flex-1 my-auto'>
-					<p className={style3} style={shadow3}>
-						{effects[2]}
-					</p>
-					<p className={style4} style={shadow4}>
-						{effects[3]}
-					</p>
+					<p className={styles[2]}>{effects[2]}</p>
+					<p className={styles[3]}>{effects[3]}</p>
 				</div>
 			</div>
 			<div className='flex px-2 border-b border-black bg-slate-100 xs:hidden'>
@@ -101,10 +80,10 @@ export default function SelectedIngredient(props) {
 					<RemoveButton onClick={deselectHandler} />
 				</div>
 				<div className='flex-1 my-1 ml-1 truncate'>
-					<p className={style1}>{effects[0]}</p>
-					<p className={style2}>{effects[1]}</p>
-					<p className={style3}>{effects[2]}</p>
-					<p className={style4}>{effects[3]}</p>
+					<p className={styles[0]}>{effects[0]}</p>
+					<p className={styles[1]}>{effects[1]}</p>
+					<p className={styles[2]}>{effects[2]}</p>
+					<p className={styles[3]}>{effects[3]}</p>
 				</div>
 			</div>
 		</>
