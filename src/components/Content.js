@@ -5,16 +5,20 @@ import Version from "./Version";
 import SectionCard from "./UI/SectionCard";
 import IngredientResults from "./Ingredients/IngredientResults";
 import getMatchesAndConflicts from "@/functions/getMatchesAndConflicts";
+import EffectsResults from "./Effects/EffectsResults";
+import Combinations from "./Effects/Combinations";
 
 export default function Content(props) {
 	// Controls which mode is being viewed, selected by clicking on tabs.
-	const [selectionMode, setSelectionMode] = useState("ingredients");
+	const [selectionMode, setSelectionMode] = useState("effects");
 	// Controls window height behaviour in the SectionCard component.
 	const [sectionsShown, setSectionsShown] = useState(2);
 	// An array of IDs relating to either ingredients or effects, as selected by the user. Maximum 3 selections.
 	const [userSelections, setUserSelections] = useState([]);
 	// If three ingredients/effects are selected, adding more is disabled.
 	const [disableAddButtons, setDisableAddButtons] = useState(false);
+	// Controls if outcome or combinations are being viewed on effects tab.
+	const [isViewingOutcome, setIsViewingOutcome] = useState(false);
 	// Store matches and conflicts for helping display logic on ingredients tab.
 	const [matchesAndConflicts, setMatchesAndConflicts] = useState({
 		triples: [],
@@ -60,6 +64,14 @@ export default function Content(props) {
 		setUserSelections([]);
 	};
 
+	const combinationsClickHandler = () => {
+		setIsViewingOutcome(false);
+	};
+
+	const outcomeClickHandler = () => {
+		setIsViewingOutcome(true);
+	};
+
 	// Called from the SectionCard component.
 	const adjustSectionsShown = (num) => {
 		setSectionsShown((prevState) => {
@@ -72,7 +84,6 @@ export default function Content(props) {
 			<div className='mt-2'>
 				<Version toggleShowInfo={props.toggleShowInfo} />
 			</div>
-
 			{selectionMode === "ingredients" && (
 				<SectionCard
 					tab1={"Outcome"}
@@ -83,6 +94,23 @@ export default function Content(props) {
 						selectedCount={userSelections.length}
 						matchesAndConflicts={matchesAndConflicts}
 					/>
+				</SectionCard>
+			)}
+			{selectionMode === "effects" && (
+				<SectionCard
+					tab1={"Combinations"}
+					tabClick1={combinationsClickHandler}
+					tab2={"Outcome"}
+					tabClick2={outcomeClickHandler}
+					renderInfo={sectionsShown}
+					renderControl={adjustSectionsShown}
+				>
+					{isViewingOutcome && (
+						<EffectsResults selectedIDs={userSelections} />
+					)}
+					{!isViewingOutcome && (
+						<Combinations selectedIDs={userSelections} />
+					)}
 				</SectionCard>
 			)}
 
