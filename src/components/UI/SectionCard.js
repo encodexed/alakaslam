@@ -12,9 +12,9 @@ export default function SectionCard(props) {
 		})
 	}
 	
-	let height = 'min-h-72';
+	let height = 'min-h-[320px]';
 	if (!isSectionShown) {
-		height = 'min-h-7 max-h-7';
+		height = 'min-h-[28px] max-h-7';
 	}
 
    const showStyle = isSectionShown ? 'overflow-scroll' : 'overflow-hidden';

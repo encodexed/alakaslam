@@ -20,8 +20,6 @@ module.exports = {
 			...defaultTheme.screens,
 		},
 		minHeight: {
-			72: "288px",
-			7: "28px",
 			780: "780px"
 		},
 	},
