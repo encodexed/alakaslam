@@ -14,11 +14,11 @@ export default function SectionCard(props) {
 	
 	let height = 'min-h-[320px]';
 	if (!isSectionShown) {
-		height = 'min-h-[28px] max-h-7';
+		height = 'min-h-[24px] max-h-6 xs:min-h-[28px] xs:max-h-7';
 	}
 
    const showStyle = isSectionShown ? 'overflow-scroll' : 'overflow-hidden';
-   const style = `${height} ${showStyle} flex-1 pt-0 mx-6 my-2 bg-white border-2 border-black rounded-md shadow-md shadow-black/30`;
+   const style = `${height} ${showStyle} flex-1 pt-0 mx-2 xs:mx-6 my-2 bg-white border-2 border-black rounded-md shadow-md shadow-black/30`;
 
 	return (
 		<div className={style}>

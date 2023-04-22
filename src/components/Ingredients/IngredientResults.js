@@ -33,65 +33,67 @@ export default function IngredientResults(props) {
 	}, [props.matchesAndConflicts, props.selectedCount]);
 
 	return (
-		<div className='p-2'>
-			<DisplayConflicts conflicts={props.matchesAndConflicts.conflicts} />
-			<div className='flex'>
-				<div className='flex-1'>
-					<ConcoctionCard>
-						<div className='flex flex-col text-center'>
-							<h2 className='text-lg leading-none sm:text-xl'>
-								{potionName}
-							</h2>
-							<Image
-								className='mx-auto'
-								src='/images/potions/Increase_Armor.png'
-								alt='A potion!'
-								width={48}
-								height={48}
-							/>
+		<>
+			<div className='p-2'>
+				<DisplayConflicts conflicts={props.matchesAndConflicts.conflicts} />
+				<div className='flex flex-col xxs:flex-row'>
+					<div className='flex-1'>
+						<ConcoctionCard>
 							<div className='flex flex-col text-center'>
-								{effectsIDs.map((effectID) => {
-									return (
-										<ConcoctionDescription
-											key={"potion" + effectID}
-											concoctionType='potion'
-											effectID={effectID}
-										/>
-									);
-								})}
+								<h2 className='text-lg leading-none sm:text-xl'>
+									{potionName}
+								</h2>
+								<Image
+									className='mx-auto'
+									src='/images/potions/Increase_Armor.png'
+									alt='A potion!'
+									width={48}
+									height={48}
+								/>
+								<div className='flex flex-col text-center'>
+									{effectsIDs.map((effectID) => {
+										return (
+											<ConcoctionDescription
+												key={"potion" + effectID}
+												concoctionType='potion'
+												effectID={effectID}
+											/>
+										);
+									})}
+								</div>
 							</div>
-						</div>
-					</ConcoctionCard>
-				</div>
-				<div className='flex-shrink my-auto'>OR</div>
-				<div className='flex-1'>
-					<ConcoctionCard>
-						<div className='flex flex-col text-center'>
-							<h2 className='text-lg leading-none sm:text-xl'>
-								{poisonName}
-							</h2>
-							<Image
-								className='mx-auto'
-								src='/images/poisons/Red_Poison.png'
-								alt='A poison!'
-								width={48}
-								height={48}
-							/>
+						</ConcoctionCard>
+					</div>
+					<div className='flex-shrink my-auto text-center'>OR</div>
+					<div className='flex-1'>
+						<ConcoctionCard>
 							<div className='flex flex-col text-center'>
-								{effectsIDs.map((effectID) => {
-									return (
-										<ConcoctionDescription
-											key={"poison" + effectID}
-											concoctionType='poison'
-											effectID={effectID}
-										/>
-									);
-								})}
+								<h2 className='text-lg leading-none sm:text-xl'>
+									{poisonName}
+								</h2>
+								<Image
+									className='mx-auto'
+									src='/images/poisons/Red_Poison.png'
+									alt='A poison!'
+									width={48}
+									height={48}
+								/>
+								<div className='flex flex-col text-center'>
+									{effectsIDs.map((effectID) => {
+										return (
+											<ConcoctionDescription
+												key={"poison" + effectID}
+												concoctionType='poison'
+												effectID={effectID}
+											/>
+										);
+									})}
+								</div>
 							</div>
-						</div>
-					</ConcoctionCard>
+						</ConcoctionCard>
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
