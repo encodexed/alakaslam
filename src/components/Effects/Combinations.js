@@ -11,26 +11,44 @@ export default function Combinations(props) {
 	const [combinations, setCombinations] = useState([]);
 
 	useEffect(() => {
-		if (props.selectedIDs.length === 1) {
-			const newCombinations = oneEffectCombinations(props.selectedIDs, props.strictMode);
-			setCombinations([...newCombinations]);
-		}
-
-		if (props.selectedIDs.length === 0) {
-			setCombinations([]);
+		let newCombinations = [];
+		switch (props.selectedIDs.length) {
+			case 0:
+				setCombinations([]);
+				break;
+			case 1:
+				newCombinations = oneEffectCombinations(
+					props.selectedIDs[0],
+					props.strictMode
+				);
+				setCombinations([...newCombinations]);
+				break;
+			case 2:
+				newCombinations = twoEffectCombinations(
+					props.selectedIDs,
+					props.strictMode
+				);
+				setCombinations([...newCombinations]);
+				break;
+			case 3:
+				newCombinations = threeEffectCombinations(
+					props.selectedIDs,
+					props.strictMode
+				);
+				setCombinations([...newCombinations]);
+				break;
+			default:
+				setCombinations([]);
+				break;
 		}
 	}, [props.selectedIDs, props.strictMode]);
 
 	if (props.selectedIDs.length === 0) {
-		return (
-			<NoInput />
-		)
+		return <NoInput />;
 	}
 
 	if (props.selectedIDs.length > 0 && combinations.length === 0) {
-		return (
-			<NoStrictResults />
-		)
+		return <NoStrictResults />;
 	}
 
 	return (

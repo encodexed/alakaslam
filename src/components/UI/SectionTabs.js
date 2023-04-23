@@ -1,7 +1,7 @@
 // Needs state to display which is currently selected
 
 export default function SectionTabs(props) {
-	const strictIndication = props.strictMode ? "strict: ON" : "strict: OFF";
+	const strictIndication = props.strictMode ? "strict ON" : "strict OFF";
 
 	// Handlers
 	const toggleShown = () => {
