@@ -19,6 +19,9 @@ export default function Content(props) {
 	const [disableAddButtons, setDisableAddButtons] = useState(false);
 	// Controls if outcome or combinations are being viewed on effects tab.
 	const [isViewingOutcome, setIsViewingOutcome] = useState(false);
+	// When enabled, strict search prevents showing concoctions with side effects the user didn't specify.
+	// However, some effects cannot exist on their own, as in the case of Cowardice.
+	const [strictMode, setStrictMode] = useState(true);
 	// Store matches and conflicts for helping display logic on ingredients tab.
 	const [matchesAndConflicts, setMatchesAndConflicts] = useState({
 		triples: [],
@@ -56,6 +59,7 @@ export default function Content(props) {
 
 	const ingredientsClickHandler = () => {
 		setSelectionMode("ingredients");
+		setIsViewingOutcome(false);
 		setUserSelections([]);
 	};
 
@@ -71,6 +75,12 @@ export default function Content(props) {
 	const outcomeClickHandler = () => {
 		setIsViewingOutcome(true);
 	};
+
+	const toggleStrictModeHandler = () => {
+		setStrictMode((prevState) => {
+			return !prevState;
+		})
+	}
 
 	// Called from the SectionCard component.
 	const adjustSectionsShown = (num) => {
@@ -104,12 +114,15 @@ export default function Content(props) {
 					tabClick2={outcomeClickHandler}
 					renderInfo={sectionsShown}
 					renderControl={adjustSectionsShown}
+					strictMode={strictMode}
+					toggleStrictMode={toggleStrictModeHandler}
+					isViewingOutcome={isViewingOutcome}
 				>
 					{isViewingOutcome && (
 						<EffectsResults selectedIDs={userSelections} />
 					)}
 					{!isViewingOutcome && (
-						<Combinations selectedIDs={userSelections} />
+						<Combinations selectedIDs={userSelections} strictMode={strictMode} />
 					)}
 				</SectionCard>
 			)}

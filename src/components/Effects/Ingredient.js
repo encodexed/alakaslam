@@ -2,7 +2,7 @@ import Icon from "../UI/Icon";
 import IngredientsData from "../../IngredientsData";
 
 export default function Ingredient(props) {
-	if (props.id === "-1") {
+	if (props.id === -1) {
 		return <div className='flex flex-1 border-b'></div>;
 	}
 

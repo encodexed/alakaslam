@@ -12,12 +12,15 @@ export default function SectionCard(props) {
 		})
 	}
 	
+	let showStyle = 'overflow-scroll';
 	let height = 'min-h-[320px]';
 	if (!isSectionShown) {
 		height = 'min-h-[24px] max-h-6 xs:min-h-[28px] xs:max-h-7';
+		showStyle = 'overflow-hidden'
+	} else if (props.renderInfo > 1 && isSectionShown) {
+		height = 'min-h-[320px] max-h-[600px]';
 	}
 
-   const showStyle = isSectionShown ? 'overflow-scroll' : 'overflow-hidden';
    const style = `${height} ${showStyle} flex-1 pt-0 mx-2 xs:mx-6 my-2 bg-white border-2 border-black rounded-md shadow-md shadow-black/30`;
 
 	return (
@@ -29,6 +32,9 @@ export default function SectionCard(props) {
 				tabClick2={props.tabClick2}
 				shown={isSectionShown}
 				toggleShown={toggleSectionShown}
+				strictMode={props.strictMode}
+				toggleStrictMode={props.toggleStrictMode}
+				isViewingOutcome={props.isViewingOutcome}
 			/>
 			{props.children}
 		</div>
