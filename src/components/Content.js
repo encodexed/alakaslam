@@ -13,10 +13,14 @@ export default function Content(props) {
 	const [selectionMode, setSelectionMode] = useState("effects");
 	// Controls window height behaviour in the SectionCard component.
 	const [sectionsShown, setSectionsShown] = useState(2);
-	// An array of IDs relating to either ingredients or effects, as selected by the user. Maximum 3 selections.
-	const [userSelections, setUserSelections] = useState([]);
-	// If three ingredients/effects are selected, adding more is disabled.
-	const [disableAddButtons, setDisableAddButtons] = useState(false);
+	// An array of ingredient IDs as selected by the user. Maximum 3 selections.
+	const [userIngredientSelections, setUserIngredientSelections] = useState([]);
+	// An array of effects IDs as selected by the user. Maximum 3 selections.
+	const [userEffectSelections, setUserEffectSelections] = useState([]);
+	// If three effects are selected, adding more is disabled.
+	const [disableAddEffects, setDisableAddEffects] = useState(false);
+	// If three ingredients are selected, adding more is disabled.
+	const [disableAddIngredients, setDisableAddIngredients] = useState(false);
 	// Controls if outcome or combinations are being viewed on effects tab.
 	const [isViewingOutcome, setIsViewingOutcome] = useState(false);
 	// When enabled, strict search prevents showing concoctions with side effects the user didn't specify.
@@ -31,41 +35,54 @@ export default function Content(props) {
 
 	useEffect(() => {
 		// Disable buttons in maximum allowed user selections reached
-		const maxChoices = userSelections.length >= 3;
-		setDisableAddButtons(maxChoices);
+		const maxEffectChoices = userEffectSelections.length >= 3;
+		const maxIngredientChoices = userIngredientSelections.length >= 3;
+		setDisableAddEffects(maxEffectChoices);
+		setDisableAddIngredients(maxIngredientChoices);
 		// Get new matches and conflicts of selected ingredients.
 		if (selectionMode === "ingredients") {
-			const matchesConflicts = getMatchesAndConflicts(userSelections);
+			const matchesConflicts = getMatchesAndConflicts(userIngredientSelections);
 			setMatchesAndConflicts({
 				triples: matchesConflicts.triples,
 				doubles: matchesConflicts.doubles,
 				conflicts: matchesConflicts.conflicts,
 			});
 		}
-	}, [selectionMode, userSelections]);
+	}, [selectionMode, userIngredientSelections, userEffectSelections]);
 
-	const selectOne = (id) => {
-		if (userSelections.length < 3) {
-			setUserSelections([...userSelections, id]);
+	const selectEffect = (id) => {
+		if (userEffectSelections.length < 3) {
+			setUserEffectSelections([...userEffectSelections, id]);
 		}
 	};
 
-	const deselectOne = (id) => {
-		const newSelections = userSelections.filter(
+	const deselectEffect = (id) => {
+		const newSelections = userEffectSelections.filter(
 			(selection) => selection !== id
 		);
-		setUserSelections([...newSelections]);
+		setUserEffectSelections([...newSelections]);
+	};
+
+	const selectIngredient = (id) => {
+		if (userIngredientSelections.length < 3) {
+			setUserIngredientSelections([...userIngredientSelections, id]);
+		}
+	};
+
+	const deselectIngredient = (id) => {
+		const newSelections = userIngredientSelections.filter(
+			(selection) => selection !== id
+		);
+		setUserIngredientSelections([...newSelections]);
 	};
 
 	const ingredientsClickHandler = () => {
 		setSelectionMode("ingredients");
 		setIsViewingOutcome(false);
-		setUserSelections([]);
 	};
 
 	const effectsClickHandler = () => {
 		setSelectionMode("effects");
-		setUserSelections([]);
 	};
 
 	const combinationsClickHandler = () => {
@@ -101,7 +118,7 @@ export default function Content(props) {
 					renderControl={adjustSectionsShown}
 				>
 					<IngredientResults
-						selectedCount={userSelections.length}
+						selectedCount={userIngredientSelections.length}
 						matchesAndConflicts={matchesAndConflicts}
 					/>
 				</SectionCard>
@@ -119,10 +136,10 @@ export default function Content(props) {
 					isViewingOutcome={isViewingOutcome}
 				>
 					{isViewingOutcome && (
-						<EffectsResults selectedIDs={userSelections} />
+						<EffectsResults selectedIDs={userEffectSelections} />
 					)}
 					{!isViewingOutcome && (
-						<Combinations selectedIDs={userSelections} strictMode={strictMode} />
+						<Combinations selectedIDs={userEffectSelections} strictMode={strictMode} />
 					)}
 				</SectionCard>
 			)}
@@ -137,19 +154,19 @@ export default function Content(props) {
 			>
 				{selectionMode === "ingredients" && (
 					<Ingredients
-						selectedIDs={userSelections}
+						selectedIDs={userIngredientSelections}
 						matchesAndConflicts={matchesAndConflicts}
-						selectOne={selectOne}
-						deselectOne={deselectOne}
-						disableAddButtons={disableAddButtons}
+						selectOne={selectIngredient}
+						deselectOne={deselectIngredient}
+						disableAddButtons={disableAddIngredients}
 					/>
 				)}
 				{selectionMode === "effects" && (
 					<PotionEffects
-						selectedIDs={userSelections}
-						selectOne={selectOne}
-						deselectOne={deselectOne}
-						disableAddButtons={disableAddButtons}
+						selectedIDs={userEffectSelections}
+						selectOne={selectEffect}
+						deselectOne={deselectEffect}
+						disableAddButtons={disableAddEffects}
 					/>
 				)}
 			</SectionCard>
