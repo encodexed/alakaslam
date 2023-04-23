@@ -12,6 +12,21 @@ export default function twoEffectCombinations(effectIDs, strictMode) {
 		eligible.push(...EffectsData[id].reagents);
 	});
 
+	// Get the counter effects of selected effects
+	let counterEffects = [];
+	effectIDs.forEach((id) => {
+		counterEffects.push(EffectsData[id].counterEffect);
+	})
+
+	// Remove ingredients that possess a counter effect
+	eligible.forEach((reagent, index) => {
+		counterEffects.forEach((counter) => {
+			if (IngredientsData[reagent].effectsIDs.includes(counter)) {
+				eligible.splice(index, 1);
+			}
+		})
+	})
+
 	// Find any ingredients that show up twice
 	const occurrences = getOccurrences(eligible);
 	const doubles = occurrences[1];
@@ -22,7 +37,6 @@ export default function twoEffectCombinations(effectIDs, strictMode) {
 		return [];
 	}
 
-	console.log(effectIDs);
 	// Separate singles into what they can do.
 	let group1 = [];
 	let group2 = [];
