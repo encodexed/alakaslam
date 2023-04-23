@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Combination from "./Combination";
 import oneEffectCombinations from "@/functions/oneEffectCombinations";
 import NoInput from "../NoInput";
+import NoStrictResults from "./NoStrictResults";
 
 export default function Combinations(props) {
 	// An array that stores all the current possible combinations for making concoctions with the selected effects.
@@ -23,6 +24,12 @@ export default function Combinations(props) {
 	if (props.selectedIDs.length === 0) {
 		return (
 			<NoInput />
+		)
+	}
+
+	if (props.selectedIDs.length > 0 && combinations.length === 0) {
+		return (
+			<NoStrictResults />
 		)
 	}
 
