@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 // import EffectsData from "../../EffectsData";
 import Combination from "./Combination";
 import oneEffectCombinations from "@/functions/oneEffectCombinations";
+import twoEffectCombinations from "@/functions/twoEffectCombinations";
 import NoInput from "../NoInput";
 import NoStrictResults from "./NoStrictResults";
 

@@ -18,7 +18,7 @@ export default function SelectedIngredient(props) {
 	useEffect(() => {
 		// Display a visualisation of matching effects between ingredients, or conflicting effects.
 		let newStyles = [];
-		const effectsIDs = getIDsFromNames("effects", effects);
+		const effectsIDs = getIDsFromNames(effects);
 
 		effectsIDs.forEach((id) => {
 			if (

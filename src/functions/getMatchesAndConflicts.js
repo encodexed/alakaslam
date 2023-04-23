@@ -3,30 +3,17 @@ import getEffects from "./getEffects";
 import EffectsData from "@/EffectsData";
 import getIDsFromNames from "./getIDsFromNames";
 import removeDuplicates from "./removeDuplicates";
+import getOccurrences from "./getOccurrences";
 
 export default function getMatchesAndConflicts(ingredientsIDs) {
    // Get all effects of user selected ingredients
 	let allEffects = getEffects(ingredientsIDs);
    allEffects.sort();
-   const allIDs = getIDsFromNames('effects', allEffects);
+   const allIDs = getIDsFromNames(allEffects);
 
-	// Count occurrences of each element in the array
-   const count = {};
-	allIDs.forEach((item) => {
-		count[item] = count[item] ? count[item] + 1 : 1;
-   });
-
-	// Iterate through the count object and add items to respective arrays
-   let doubles = [];
-   let triples = [];
-   for (let item in count) {
-		if (count[item] === 2) {
-			doubles.push(parseInt(item));
-		} else if (count[item] === 3) {
-			triples.push(parseInt(item));
-		}
-   }
-
+   const occurrences = getOccurrences(allIDs);
+   const triples = occurrences[0];
+   const doubles = occurrences[1];
 
    // Mark conflicts for the user
    let conflicts = [];
