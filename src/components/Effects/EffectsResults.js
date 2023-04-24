@@ -1,115 +1,79 @@
-import SectionHeader from "../UI/SectionHeader";
 import ConcoctionCard from "../UI/ConcoctionCard";
 import ConcoctionDescription from "../ConcoctionDescription";
-import EffectsData from "../../EffectsData";
 import { useState, useEffect } from "react";
 import NoInput from "../NoInput";
 import Image from "next/image";
+import getConcoctionName from "@/functions/getConcoctionName";
 
 export default function EffectsResults(props) {
-	const [potionName, setPotionName] = useState("Unnamed potion");
-	const [poisonName, setPoisonName] = useState("Unnamed poison");
-	const [effects, setEffects] = useState([]); // for holding effect objects
+	const [potionName, setPotionName] = useState("");
+	const [poisonName, setPoisonName] = useState("");
 
 	useEffect(() => {
-		// Converting effects back into their objects. Was it necessary to split it in the first place? Will check later.
-		let effectInfo = [];
-		props.selectedEffectsIDs.forEach((effect) => {
-			for (let i = 0; i < EffectsData.length; i++) {
-				if (EffectsData[i].id === effect) {
-					effectInfo.push(EffectsData[i]);
-				}
-			}
-		});
-		setEffects(effectInfo);
+		const concoctionNames = getConcoctionName(props.selectedIDs);
+		setPotionName(concoctionNames[0]);
+		setPoisonName(concoctionNames[1]);
+	}, [props.selectedIDs]);
 
-		// Determining the names based on hierarchical data for the concoctions.
-		let strength = [];
-		effectInfo.forEach((effect) => {
-			strength.push(effect.hierarchy);
-		});
-		const strongest = Math.min(...strength);
-		effectInfo.forEach((effect) => {
-			if (effect.hierarchy === strongest.toString()) {
-				setPotionName(effect.potionName);
-				setPoisonName(effect.poisonName);
-			}
-		});
-	}, [props.selectedEffectsIDs]);
-
-	if (props.selectedEffectsIDs.length === 0) {
-		return (
-			<>
-				<SectionHeader title='Need Help?' />
-				<NoInput />
-			</>
-		);
+	if (props.selectedIDs.length === 0) {
+		return <NoInput />;
 	}
 
 	return (
-		<>
-			<SectionHeader title='Results' linkContent='(CP 150)' />
-			<div className='border'>
-				<div className='flex'>
-					<div className='flex-1'>
-						<ConcoctionCard>
-							<div className='flex flex-col text-center'>
-								<h2 className='text-lg leading-none sm:text-xl'>{potionName}</h2>
-								<div>
-									<Image
-										priority={true}
-										className='mx-auto'
-										src='/images/potions/Increase_Armor.png'
-										alt='A potion!'
-										width={48}
-										height={48}
+		<div className='p-2'>
+			<div className='flex flex-col xxs:flex-row'>
+				<div className='flex-1'>
+					<ConcoctionCard>
+						<h2 className='text-lg leading-none sm:text-xl'>
+							{potionName}
+						</h2>
+						<Image
+							className='mx-auto'
+							src='/images/potions/Increase_Armor.png'
+							alt='A potion!'
+							width={48}
+							height={48}
+						/>
+						<div className='flex flex-col text-center'>
+							{props.selectedIDs.map((effectID) => {
+								return (
+									<ConcoctionDescription
+										key={"potion" + effectID}
+										concoctionType='potion'
+										effectID={effectID}
 									/>
-								</div>
-								<div className='flex flex-col text-center'>
-									{effects.map((effect) => {
-										return (
-											<ConcoctionDescription
-												key={"potion" + effect.name}
-												concoctionType='potion'
-												effect={effect}
-											/>
-										);
-									})}
-								</div>
-							</div>
-						</ConcoctionCard>
-					</div>
-					<div className='flex-shrink my-auto'>OR</div>
-					<div className='flex-1'>
-						<ConcoctionCard>
-							<div className='flex flex-col text-center'>
-								<h2 className='text-lg leading-none sm:text-xl'>{poisonName}</h2>
-								<div>
-									<Image
-										priority={true}
-										className='mx-auto'
-										src='/images/poisons/Red_Poison.png'
-										alt='A poison!'
-										width={48}
-										height={48}
+								);
+							})}
+						</div>
+					</ConcoctionCard>
+				</div>
+				<div className='flex-shrink my-auto text-center'>OR</div>
+				<div className='flex-1'>
+					<ConcoctionCard>
+						<h2 className='text-lg leading-none sm:text-xl'>
+							{poisonName}
+						</h2>
+						<Image
+							className='mx-auto'
+							src='/images/poisons/Red_Poison.png'
+							alt='A poison!'
+							width={48}
+							height={48}
+						/>
+						<div className='flex flex-col text-center'>
+							{props.selectedIDs.map((effectID) => {
+								return (
+									<ConcoctionDescription
+										key={"poison" + effectID}
+										concoctionType='poison'
+										effectID={effectID}
 									/>
-								</div>
-								<div className='flex flex-col text-center'>
-									{effects.map((effect) => {
-										return (
-											<ConcoctionDescription
-												key={"poison" + effect.name}
-												concoctionType='poison'
-												effect={effect}
-											/>
-										);
-									})}
-								</div>
-							</div>
-						</ConcoctionCard>
-					</div>
+								);
+							})}
+						</div>
+					</ConcoctionCard>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }

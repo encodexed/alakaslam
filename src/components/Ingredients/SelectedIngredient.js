@@ -1,81 +1,91 @@
 import RemoveButton from "../UI/RemoveButton";
 import Icon from "../UI/Icon";
-import DisabledRemoveButton from "../UI/DisabledRemoveButton";
+import IngredientsData from "@/IngredientsData";
+import { useState, useEffect } from "react";
+import getIDsFromNames from "@/functions/getIDsFromNames";
+
+const unmatchedStyle =
+	"xxs:text-sm text-xs leading-none xxs:leading-none text-center text-slate-400";
+const matchedStyle =
+	"xxs:text-sm text-xs leading-none xxs:leading-none text-center text-purple-500";
+const counterEffectStyle =
+	"xxs:text-sm text-xs leading-none xxs:leading-none text-center text-red-500";
 
 export default function SelectedIngredient(props) {
-	const { id, name, effect1, effect2, effect3, effect4, src } =
-		props.ingredient;
-	const unmatchedStyle = "sm:text-sm text-xs leading-none text-center text-slate-500";
-	const matchedStyle = "sm:text-sm text-xs leading-none text-center text-purple-500";
-	const counterEffectStyle = "sm:text-sm text-xs leading-none text-center text-red-500";
-	const matchedShadowStyle = { textShadow: "purple 0 0 0.5px" };
-	const counterEffectShadowStyle = { textShadow: "red 0 0 0.5px" };
-	let shadow1, shadow2, shadow3, shadow4;
-	let style1 = unmatchedStyle;
-	let style2 = unmatchedStyle;
-	let style3 = unmatchedStyle;
-	let style4 = unmatchedStyle;
+	const [styles, setStyles] = useState([]);
+	const { id, name, effects, src } = IngredientsData[props.ingredientID];
 
-	// Display matching effects
-	if (props.matchedEffects.includes(effect1)) {
-		style1 = matchedStyle;
-		shadow1 = matchedShadowStyle;
-	}
-	if (props.matchedEffects.includes(effect2)) {
-		style2 = matchedStyle;
-		shadow2 = matchedShadowStyle;
-	}
-	if (props.matchedEffects.includes(effect3)) {
-		style3 = matchedStyle;
-		shadow3 = matchedShadowStyle;
-	}
-	if (props.matchedEffects.includes(effect4)) {
-		style4 = matchedStyle;
-		shadow4 = matchedShadowStyle;
-	}
-	// Change style for counter effects
-	if (props.counterEffects.includes(effect1)) {
-		style1 = counterEffectStyle;
-		shadow1 = counterEffectShadowStyle;
-	}
-	if (props.counterEffects.includes(effect2)) {
-		style2 = counterEffectStyle;
-		shadow2 = counterEffectShadowStyle;
-	}
-	if (props.counterEffects.includes(effect3)) {
-		style3 = counterEffectStyle;
-		shadow3 = counterEffectShadowStyle;
-	}
-	if (props.counterEffects.includes(effect4)) {
-		style4 = counterEffectStyle;
-		shadow4 = counterEffectShadowStyle;
-	}
+	useEffect(() => {
+		// Display a visualisation of matching effects between ingredients, or conflicting effects.
+		let newStyles = [];
+		const effectsIDs = getIDsFromNames(effects);
 
+		effectsIDs.forEach((id) => {
+			if (
+				props.matchesAndConflicts.triples.includes(id) ||
+				props.matchesAndConflicts.doubles.includes(id)
+			) {
+				newStyles.push(matchedStyle);
+			} else {
+				let conflicted = false;
+				for (let conflict of props.matchesAndConflicts.conflicts) {
+					if (conflict.counterID === id) {
+						newStyles.push(counterEffectStyle);
+						conflicted = true;
+						break;
+					}
+				}
+				if (!conflicted) {
+					newStyles.push(unmatchedStyle);
+				}
+			}
+		});
+
+		setStyles([...newStyles]);
+	}, [props.matchesAndConflicts, effects]);
+
+	const deselectHandler = () => {
+		props.deselectIngredient(id);
+	};
 
 	return (
-		<div className='flex'>
-			<div>
-				<Icon src={src} />
+		<>
+			<div className='hidden px-2 border-b border-black xs:flex bg-slate-100'>
+				<div>
+					<Icon src={src} />
+				</div>
+				<div className='flex-1 w-40 my-auto justify-content-center'>
+					<h3 className='text-sm text-center sm:text-base'>{name}</h3>
+				</div>
+				<div className='my-auto flex-0'>
+					<RemoveButton onClick={deselectHandler} />
+				</div>
+				<div className='flex-1 my-auto ml-2'>
+					<p className={styles[0]}>{effects[0]}</p>
+					<p className={styles[1]}>{effects[1]}</p>
+				</div>
+				<div className='flex-1 my-auto'>
+					<p className={styles[2]}>{effects[2]}</p>
+					<p className={styles[3]}>{effects[3]}</p>
+				</div>
 			</div>
-			<div className='flex-1 w-40 my-auto justify-content-center'>
-				<h3 className='text-sm text-center sm:text-base'>{name}</h3>
+			<div className='flex px-2 border-b border-black bg-slate-100 xs:hidden'>
+				<div>
+					<Icon src={src} />
+				</div>
+				<div className='flex-1 my-auto justify-content-center'>
+					<h3 className='text-sm text-center sm:text-base'>{name}</h3>
+				</div>
+				<div className='my-auto flex-0'>
+					<RemoveButton onClick={deselectHandler} />
+				</div>
+				<div className='flex-1 my-1 ml-1 truncate'>
+					<p className={styles[0]}>{effects[0]}</p>
+					<p className={styles[1]}>{effects[1]}</p>
+					<p className={styles[2]}>{effects[2]}</p>
+					<p className={styles[3]}>{effects[3]}</p>
+				</div>
 			</div>
-			<div className='my-auto flex-0'>
-				{id >= 0 && (
-					<RemoveButton onClick={props.deselectHandler} />
-				)}
-				{id < 0 && (
-					<DisabledRemoveButton />
-				)}
-			</div>
-			<div className='flex-1 my-auto ml-2'>
-				<p className={style1} style={shadow1}>{effect1}</p>
-				<p className={style2} style={shadow2}>{effect2}</p>
-			</div>
-			<div className='flex-1 my-auto'>
-				<p className={style3} style={shadow3}>{effect3}</p>
-				<p className={style4} style={shadow4}>{effect4}</p>
-			</div>
-		</div>
+		</>
 	);
 }

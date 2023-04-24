@@ -1,23 +1,21 @@
+import IngredientsData from "@/IngredientsData";
 import EffectsData from "../../EffectsData";
 import AddButton from "../UI/AddButton";
 import DisabledAddButton from "../UI/DisabledAddButton";
 import Icon from "../UI/Icon";
-import RemoveButton from "../UI/RemoveButton";
+import getEffects from "@/functions/getEffects";
+import removeDuplicates from "@/functions/removeDuplicates";
 
 export default function Effect(props) {
-	const effect = EffectsData[props.id - 100];
+	const effect = EffectsData[props.id];
 	const { id, name, src, summary } = effect;
 
 	const selectEffect = () => {
 		props.selectEffect(id);
 	};
 
-	const deselectEffect = () => {
-		props.deselectEffect(id);
-	};
-
 	return (
-		<div className='flex'>
+		<div className='flex border-b'>
 			<div>
 				<Icon src={src} />
 			</div>
@@ -25,11 +23,10 @@ export default function Effect(props) {
 				<h3 className='text-sm text-center sm:text-base'>{name}</h3>
 			</div>
 			<div className='my-auto flex-0'>
-				{props.isSelected && <RemoveButton onClick={deselectEffect} />}
-				{!props.isSelected && !props.isDisabled && (
+				{!props.isDisabled && (
 					<AddButton onClick={selectEffect} />
 				)}
-				{!props.isSelected && props.isDisabled && <DisabledAddButton />}
+				{props.isDisabled && <DisabledAddButton />}
 			</div>
 			<div className='flex-1 mx-2 my-auto'>
 				<p className='text-xs leading-none text-center sm:text-sm text-slate-500'>

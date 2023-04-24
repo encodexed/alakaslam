@@ -5,6 +5,6 @@ export default function Version(props) {
    }
 
    return (
-      <p className='p-0 m-0 text-xs text-center'>ESO Alchemy Assistant - last updated: April 17, 2023 -  learn more about this tool <button className='text-blue-500 underline' onClick={openInfo}>here</button></p>
+      <p className='p-0 m-0 text-xs text-center'>Version: Update 37 Scribes of Fate (4/23) - Need <button className='text-blue-500 underline' onClick={openInfo}>help?</button></p>
    )
 }

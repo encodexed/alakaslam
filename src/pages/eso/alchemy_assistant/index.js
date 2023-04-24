@@ -10,9 +10,9 @@ export default function Home() {
 			return !prevState;
 		});
 	};
-
+	
 	return (
-		<main className='flex flex-col min-h-screen font-pangolin bg-gradient-to-b from-sky-500 via-orange-600 to-indigo-800'>
+		<main className='h-screen min-h-780 font-pangolin bg-gradient-to-b from-sky-200 via-orange-200 to-indigo-200'>
 			{showInfo && <Info toggleShowInfo={toggleShowInfo} />}
 			<Content toggleShowInfo={toggleShowInfo} />
 		</main>
