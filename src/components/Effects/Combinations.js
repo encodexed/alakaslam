@@ -60,7 +60,7 @@ export default function Combinations(props) {
 
 	return (
 		<>
-			<div className='overflow-scroll'>
+			<div className='overflow-auto'>
 				{combinations.map((combination) => {
 					const thisKey = combination.toString();
 					return (

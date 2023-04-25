@@ -8,7 +8,7 @@ export default function Info(props) {
 			className='fixed z-50 flex flex-col w-full h-full overflow-auto bg-black/80'
 			onClick={closeInfo}
 		>
-			<div className='h-full max-w-2xl mx-8 my-8 overflow-scroll font-sans leading-tight bg-white md:mx-auto'>
+			<div className='h-full max-w-2xl mx-8 my-8 overflow-auto font-sans leading-tight bg-white md:mx-auto'>
 				<h1 className='mt-4 text-3xl font-bold text-center'>
 					Welcome to the ESO Alchemy Assistant
 				</h1>
