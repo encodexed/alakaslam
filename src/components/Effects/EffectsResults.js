@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import NoInput from "../NoInput";
 import Image from "next/image";
 import getConcoctionName from "@/functions/getConcoctionName";
+import potionImage from "../../../public/images/potions/Increase_Armor.png";
+import poisonImage from "../../../public/images/poisons/Red_Poison.png";
 
 export default function EffectsResults(props) {
 	const [potionName, setPotionName] = useState("");
@@ -29,10 +31,8 @@ export default function EffectsResults(props) {
 						</h2>
 						<Image
 							className='mx-auto'
-							src='/images/potions/Increase_Armor.png'
+							src={potionImage}
 							alt='A potion!'
-							width={48}
-							height={48}
 						/>
 						<div className='flex flex-col text-center'>
 							{props.selectedIDs.map((effectID) => {
@@ -55,10 +55,8 @@ export default function EffectsResults(props) {
 						</h2>
 						<Image
 							className='mx-auto'
-							src='/images/poisons/Red_Poison.png'
+							src={poisonImage}
 							alt='A poison!'
-							width={48}
-							height={48}
 						/>
 						<div className='flex flex-col text-center'>
 							{props.selectedIDs.map((effectID) => {

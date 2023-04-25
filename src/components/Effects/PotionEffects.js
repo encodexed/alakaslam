@@ -3,8 +3,6 @@ import EffectsData from "../../EffectsData";
 import Effect from "./Effect";
 import { useState, useEffect } from "react";
 import getCompatible from "@/functions/getCompatible";
-import EffectsResults from "./EffectsResults";
-import Combinations from "./Combinations";
 
 export default function PotionEffects(props) {
 	// An array of IDs for effects that work with the user's selected effects
