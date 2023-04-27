@@ -1,5 +1,7 @@
 // Needs state to display which is currently selected
 
+import Image from "next/image";
+
 export default function SectionTabs(props) {
 	const strictIndication = props.strictMode ? "strict ON" : "strict OFF";
 
@@ -17,7 +19,8 @@ export default function SectionTabs(props) {
 	const hover = props.tab2 ? "hover:bg-slate-400 cursor-pointer" : "";
 	const basicStyle = "flex-1 truncate text-sm xs:text-base text-center";
 
-	const tabSelectedStyle = "bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700";
+	const tabSelectedStyle =
+		"bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700";
 	const tabUnselectedStyle = "bg-slate-600 hover:bg-slate-500";
 	const topLeftTabStyle = props.isViewingOutcome
 		? tabUnselectedStyle
@@ -47,10 +50,25 @@ export default function SectionTabs(props) {
 	return (
 		<div className='sticky top-0 z-30 flex overflow-hidden text-white border-b-2 border-black cursor-default'>
 			<button
-				className='flex-shrink w-10 text-xs text-center border-r-2 border-black bg-slate-600 hover:bg-slate-500'
+				className='flex-shrink w-6 text-xs text-center border-r-2 border-black bg-slate-600 hover:bg-slate-500'
 				onClick={toggleShown}
 			>
-				{viewButton}
+				{props.shown && (
+					<Image
+						src={"/images/hide.svg"}
+						alt='Minimise window'
+						width={24}
+						height={24}
+					/>
+				)}
+				{!props.shown && (
+					<Image
+						src={"/images/show.svg"}
+						alt='Expand window'
+						width={24}
+						height={24}
+					/>
+				)}
 			</button>
 			{props.tab1 === "Combinations" && (
 				<div className={styleTopLeft} onClick={props.tabClick1}>
