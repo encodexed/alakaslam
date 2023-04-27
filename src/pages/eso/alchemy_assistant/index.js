@@ -3,7 +3,7 @@ import Info from "@/components/Info";
 import { useState } from "react";
 
 export default function Home() {
-	const [showInfo, setShowInfo] = useState(false);
+	const [showInfo, setShowInfo] = useState(true);
 
 	const toggleShowInfo = () => {
 		setShowInfo((prevState) => {
