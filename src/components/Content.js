@@ -14,11 +14,11 @@ function preloadImages(array) {
 	if (!preloadImages.list) {
 		preloadImages.list = [];
 	}
-	var list = preloadImages.list;
-	for (var i = 0; i < array.length; i++) {
-		var img = new Image();
-		img.onload = function () {
-			var index = list.indexOf(this);
+	let list = preloadImages.list;
+	for (let i = 0; i < array.length; i++) {
+		let img = new Image();
+		img.onload = function() {
+			let index = list.indexOf(this);
 			if (index !== -1) {
 				// remove image from the array once it's loaded
 				// for memory consumption reasons
