@@ -35,6 +35,7 @@ export default function SectionCard(props) {
 				strictMode={props.strictMode}
 				toggleStrictMode={props.toggleStrictMode}
 				isViewingOutcome={props.isViewingOutcome}
+				selectionMode={props.selectionMode}
 			/>
 			{props.children}
 		</div>

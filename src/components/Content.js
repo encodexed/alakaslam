@@ -116,6 +116,7 @@ export default function Content(props) {
 					tab1={"Outcome"}
 					renderInfo={sectionsShown}
 					renderControl={adjustSectionsShown}
+					isViewingOutcome={isViewingOutcome}
 				>
 					<IngredientResults
 						selectedCount={userIngredientSelections.length}
@@ -151,6 +152,7 @@ export default function Content(props) {
 				tabClick2={effectsClickHandler}
 				renderInfo={sectionsShown}
 				renderControl={adjustSectionsShown}
+				selectionMode={selectionMode}
 			>
 				{selectionMode === "ingredients" && (
 					<Ingredients
