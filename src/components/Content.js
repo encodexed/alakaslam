@@ -7,8 +7,32 @@ import IngredientResults from "./Ingredients/IngredientResults";
 import getMatchesAndConflicts from "@/functions/getMatchesAndConflicts";
 import EffectsResults from "./Effects/EffectsResults";
 import Combinations from "./Effects/Combinations";
+import Images from "../Images";
+import Loading from "./Loading";
+
+function preloadImages(array) {
+	if (!preloadImages.list) {
+		preloadImages.list = [];
+	}
+	var list = preloadImages.list;
+	for (var i = 0; i < array.length; i++) {
+		var img = new Image();
+		img.onload = function () {
+			var index = list.indexOf(this);
+			if (index !== -1) {
+				// remove image from the array once it's loaded
+				// for memory consumption reasons
+				list.splice(index, 1);
+			}
+		};
+		list.push(img);
+		img.src = array[i];
+	}
+}
 
 export default function Content(props) {
+	// When first loading the page, display a loading symbol and pre-cache the images.
+	const [isPreloadingImages, setIsPreloadingImages] = useState(true);
 	// Controls which mode is being viewed, selected by clicking on tabs.
 	const [selectionMode, setSelectionMode] = useState("effects");
 	// Controls window height behaviour in the SectionCard component.
@@ -34,6 +58,11 @@ export default function Content(props) {
 	});
 
 	useEffect(() => {
+		preloadImages(Images);
+		setIsPreloadingImages(false);
+	}, []);
+
+	useEffect(() => {
 		// Disable buttons in maximum allowed user selections reached
 		const maxEffectChoices = userEffectSelections.length >= 3;
 		const maxIngredientChoices = userIngredientSelections.length >= 3;
@@ -41,7 +70,9 @@ export default function Content(props) {
 		setDisableAddIngredients(maxIngredientChoices);
 		// Get new matches and conflicts of selected ingredients.
 		if (selectionMode === "ingredients") {
-			const matchesConflicts = getMatchesAndConflicts(userIngredientSelections);
+			const matchesConflicts = getMatchesAndConflicts(
+				userIngredientSelections
+			);
 			setMatchesAndConflicts({
 				triples: matchesConflicts.triples,
 				doubles: matchesConflicts.doubles,
@@ -96,8 +127,8 @@ export default function Content(props) {
 	const toggleStrictModeHandler = () => {
 		setStrictMode((prevState) => {
 			return !prevState;
-		})
-	}
+		});
+	};
 
 	// Called from the SectionCard component.
 	const adjustSectionsShown = (num) => {
@@ -118,10 +149,13 @@ export default function Content(props) {
 					renderControl={adjustSectionsShown}
 					isViewingOutcome={isViewingOutcome}
 				>
-					<IngredientResults
-						selectedCount={userIngredientSelections.length}
-						matchesAndConflicts={matchesAndConflicts}
-					/>
+					{isPreloadingImages && <Loading />}
+					{!isPreloadingImages && (
+						<IngredientResults
+							selectedCount={userIngredientSelections.length}
+							matchesAndConflicts={matchesAndConflicts}
+						/>
+					)}
 				</SectionCard>
 			)}
 			{selectionMode === "effects" && (
@@ -136,11 +170,15 @@ export default function Content(props) {
 					toggleStrictMode={toggleStrictModeHandler}
 					isViewingOutcome={isViewingOutcome}
 				>
-					{isViewingOutcome && (
+					{isPreloadingImages && <Loading />}
+					{!isPreloadingImages && isViewingOutcome && (
 						<EffectsResults selectedIDs={userEffectSelections} />
 					)}
-					{!isViewingOutcome && (
-						<Combinations selectedIDs={userEffectSelections} strictMode={strictMode} />
+					{!isPreloadingImages && !isViewingOutcome && (
+						<Combinations
+							selectedIDs={userEffectSelections}
+							strictMode={strictMode}
+						/>
 					)}
 				</SectionCard>
 			)}
@@ -154,7 +192,8 @@ export default function Content(props) {
 				renderControl={adjustSectionsShown}
 				selectionMode={selectionMode}
 			>
-				{selectionMode === "ingredients" && (
+				{isPreloadingImages && <Loading />}
+				{!isPreloadingImages && selectionMode === "ingredients" && (
 					<Ingredients
 						selectedIDs={userIngredientSelections}
 						matchesAndConflicts={matchesAndConflicts}
@@ -163,7 +202,7 @@ export default function Content(props) {
 						disableAddButtons={disableAddIngredients}
 					/>
 				)}
-				{selectionMode === "effects" && (
+				{!isPreloadingImages && selectionMode === "effects" && (
 					<PotionEffects
 						selectedIDs={userEffectSelections}
 						selectOne={selectEffect}
