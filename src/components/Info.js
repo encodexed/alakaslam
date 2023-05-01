@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Info(props) {
 	const closeInfo = () => {
 		props.toggleShowInfo();
@@ -86,18 +88,30 @@ export default function Info(props) {
 					the effects numbers are different for different characters. These
 					are only approximations. It is best to check in-game as you
 					create it yourself.
-            </p>
-            <h2 className='m-4 mb-1 text-xl font-semibold text-center'>
+				</p>
+				<h2 className='m-4 mb-1 text-xl font-semibold text-center'>
 					How do I report a bug or contact you?
 				</h2>
 				<p className='mx-4'>
-               Send any information about incorrect calculations or other bugs to me on Discord preferably. You may also request features:
-            </p>
-            <p className='m-4 text-sm'>
-               <span className='font-semibold'>Discord:</span> Alakaslam#5357<br />
-               <span className='font-semibold'>ESO:</span> PC, North American server, @Alakaslamm<br />
-               <span className='font-semibold'>LinkedIn</span> (for hiring/jobs purposes): https://www.linkedin.com/in/robbie-gollan-b05684261/
-            </p>
+					Send any information about incorrect calculations or other bugs
+					to me on Discord preferably. You may also request features:
+				</p>
+				<p className='m-4 text-sm'>
+					<span className='font-semibold'>Discord:</span> Alakaslam#5357
+					<br />
+					<span className='font-semibold'>ESO:</span> PC, North American
+					server, @Alakaslamm
+					<br />
+					<span className='font-semibold'>LinkedIn</span> (for hiring/jobs
+					purposes):{" "}
+					<Link
+						className='text-blue-600 underline'
+						href='https://www.linkedin.com/in/robbie-gollan-b05684261/'
+						target='_blank'
+					>
+						Click here
+					</Link>
+				</p>
 			</div>
 		</div>
 	);

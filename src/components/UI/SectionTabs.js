@@ -1,17 +1,10 @@
-// Needs state to display which is currently selected
-
 import Image from "next/image";
 
 export default function SectionTabs(props) {
-	const strictIndication = props.strictMode ? "strict ON" : "strict OFF";
 
 	// Handlers
 	const toggleShown = () => {
 		props.toggleShown();
-	};
-
-	const toggleStrictMode = () => {
-		props.toggleStrictMode();
 	};
 
 	// Styling
@@ -41,11 +34,6 @@ export default function SectionTabs(props) {
 	const styleBottomRight = `${basicStyle} ${bottomRightTabStyle} ${hover} border-l-2 border-black`;
 
 	const viewButton = props.shown ? "hide" : "show";
-
-	const strictModeStyle = props.strictMode
-		? "bg-red-600 hover:bg-red-500"
-		: "bg-green-600 hover:bg-green-500";
-	const strictStyle = `${strictModeStyle} flex-shrink w-16 text-xs text-center border-l-2 border-black`;
 
 	return (
 		<div className='sticky top-0 z-30 flex overflow-hidden text-white border-b-2 border-black cursor-default'>
@@ -94,11 +82,6 @@ export default function SectionTabs(props) {
 				<div className={styleBottomRight} onClick={props.tabClick2}>
 					{props.tab2}
 				</div>
-			)}
-			{!props.isViewingOutcome && props.tab1 === "Combinations" && (
-				<button className={strictStyle} onClick={toggleStrictMode}>
-					{strictIndication}
-				</button>
 			)}
 		</div>
 	);
