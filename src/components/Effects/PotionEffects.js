@@ -25,7 +25,7 @@ export default function PotionEffects(props) {
 
 	return (
 		<>
-			<div className='sticky z-10 top-[22px] xs:top-[26px]'>
+			<div className='sticky z-10 top-[62px] xs:top-[66px]'>
 				<SelectedEffects
 					selectedIDs={props.selectedIDs}
 					deselectEffect={props.deselectOne}

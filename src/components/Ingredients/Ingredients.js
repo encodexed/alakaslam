@@ -33,7 +33,7 @@ export default function Ingredients(props) {
 
 	return (
 		<>
-			<div className='sticky z-10 top-[22px] xs:top-[26px]'>
+			<div className='sticky z-10 top-[62px] xs:top-[66px]'>
 				<SelectedIngredients
 					selectedIDs={props.selectedIDs}
 					deselectIngredient={props.deselectOne}

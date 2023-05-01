@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SectionTabs from "./SectionTabs";
 import CombinationsOptions from "../Options/CombinationsOptions";
+import ChooseIngredientsOptions from "../Options/ChooseIngredientsOptions";
 
 export default function SectionCard(props) {
 	const [isSectionShown, setIsSectionShown] = useState(true);
@@ -36,18 +37,10 @@ export default function SectionCard(props) {
 				isViewingOutcome={props.isViewingOutcome}
 				selectionMode={props.selectionMode}
 			/>
-			{/* {props.tab1 === "Choose Ingredients" &&
-				props.selectionMode === "ingredients" && (
-					<div className='border-b-2 border-black h-7'>
-						Selecting Ingredients
-					</div>
-				)}
 			{props.tab1 === "Choose Ingredients" &&
 				props.selectionMode === "effects" && (
-					<div className='border-b-2 border-black h-7'>
-						Selecting Effects
-					</div>
-				)} */}
+					<ChooseIngredientsOptions />
+				)}
 			{props.tab1 === "Combinations" && !props.isViewingOutcome && (
 				<CombinationsOptions
 					toggleStrictMode={props.toggleStrictMode}
