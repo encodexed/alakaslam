@@ -17,7 +17,7 @@ function preloadImages(array) {
 	let list = preloadImages.list;
 	for (let i = 0; i < array.length; i++) {
 		let img = new Image();
-		img.onload = function() {
+		img.onload = function () {
 			let index = list.indexOf(this);
 			if (index !== -1) {
 				// remove image from the array once it's loaded
@@ -139,9 +139,6 @@ export default function Content(props) {
 
 	return (
 		<div className='flex flex-col max-w-3xl max-h-screen mx-auto'>
-			<div className='mt-2'>
-				<Version toggleShowInfo={props.toggleShowInfo} />
-			</div>
 			{selectionMode === "ingredients" && (
 				<SectionCard
 					tab1={"Outcome"}
@@ -211,6 +208,9 @@ export default function Content(props) {
 					/>
 				)}
 			</SectionCard>
+			<div className='mb-2'>
+				<Version toggleShowInfo={props.toggleShowInfo} />
+			</div>
 		</div>
 	);
 }
