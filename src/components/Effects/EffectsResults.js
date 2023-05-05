@@ -23,16 +23,18 @@ export default function EffectsResults(props) {
 
 	return (
 		<div className='p-2'>
-			<div className='flex flex-col xxs:flex-row'>
-				<div className='flex-1'>
+			{props.outcomeView === "potion" && (
+				<div className='max-w-lg mx-auto'>
 					<ConcoctionCard>
 						<h2 className='text-lg leading-none sm:text-xl'>
 							{potionName}
 						</h2>
 						<Image
 							className='mx-auto'
-							src={potionImage}
+							src='/images/potions/Increase_Armor.png'
 							alt='A potion!'
+							width={48}
+							height={48}
 						/>
 						<div className='flex flex-col text-center'>
 							{props.selectedIDs.map((effectID) => {
@@ -47,16 +49,19 @@ export default function EffectsResults(props) {
 						</div>
 					</ConcoctionCard>
 				</div>
-				<div className='flex-shrink my-auto text-center'>OR</div>
-				<div className='flex-1'>
+			)}
+			{props.outcomeView === "poison" && (
+				<div className='max-w-lg mx-auto'>
 					<ConcoctionCard>
 						<h2 className='text-lg leading-none sm:text-xl'>
 							{poisonName}
 						</h2>
 						<Image
 							className='mx-auto'
-							src={poisonImage}
+							src='/images/poisons/Red_Poison.png'
 							alt='A poison!'
+							width={48}
+							height={48}
 						/>
 						<div className='flex flex-col text-center'>
 							{props.selectedIDs.map((effectID) => {
@@ -71,7 +76,7 @@ export default function EffectsResults(props) {
 						</div>
 					</ConcoctionCard>
 				</div>
-			</div>
+			)}
 		</div>
 	);
 }

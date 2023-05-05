@@ -31,6 +31,8 @@ function preloadImages(array) {
 }
 
 export default function Content(props) {
+	// Dictates whether potions or poisons are being viewed in the outcome tabs.
+	const [outcomeView, setOutcomeView] = useState("potion");
 	// Holds the search term to be used to filter effects list
 	const [effectsFilter, setEffectsFilter] = useState("");
 	// Holds the search term to be used to filter ingredients list
@@ -91,13 +93,17 @@ export default function Content(props) {
 
 	// Handlers
 
+	const updateOutcomeView = (str) => {
+		setOutcomeView(str);
+	};
+
 	const updateEffectsFilter = (str) => {
 		setEffectsFilter(str);
 	};
 
 	const updateIngredientsFilter = (str) => {
 		setIngredientsFilter(str);
-	}; 
+	};
 
 	const updateCombinationsFilter = (str) => {
 		setCombinationsFilter(str);
@@ -152,7 +158,6 @@ export default function Content(props) {
 		});
 	};
 
-	// Called from the SectionCard component.
 	const adjustSectionsShown = (num) => {
 		setSectionsShown((prevState) => {
 			return prevState + num;
@@ -167,12 +172,15 @@ export default function Content(props) {
 					renderInfo={sectionsShown}
 					renderControl={adjustSectionsShown}
 					isViewingOutcome={isViewingOutcome}
+					outcomeView={outcomeView}
+					updateOutcomeView={updateOutcomeView}
 				>
 					{isPreloadingImages && <Loading />}
 					{!isPreloadingImages && (
 						<IngredientResults
 							selectedCount={userIngredientSelections.length}
 							matchesAndConflicts={matchesAndConflicts}
+							outcomeView={outcomeView}
 						/>
 					)}
 				</SectionCard>
@@ -189,10 +197,15 @@ export default function Content(props) {
 					toggleStrictMode={toggleStrictModeHandler}
 					isViewingOutcome={isViewingOutcome}
 					updateCombinationsFilter={updateCombinationsFilter}
+					outcomeView={outcomeView}
+					updateOutcomeView={updateOutcomeView}
 				>
 					{isPreloadingImages && <Loading />}
 					{!isPreloadingImages && isViewingOutcome && (
-						<EffectsResults selectedIDs={userEffectSelections} />
+						<EffectsResults
+							selectedIDs={userEffectSelections}
+							outcomeView={outcomeView}
+						/>
 					)}
 					{!isPreloadingImages && !isViewingOutcome && (
 						<Combinations

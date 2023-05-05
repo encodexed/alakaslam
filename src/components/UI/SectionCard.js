@@ -59,9 +59,17 @@ export default function SectionCard(props) {
 				/>
 			)}
 			{props.tab1 === "Combinations" && props.isViewingOutcome && (
-				<OutcomeOptions />
+				<OutcomeOptions
+					outcomeView={props.outcomeView}
+					updateOutcomeView={props.updateOutcomeView}
+				/>
 			)}
-			{props.tab1 === "Outcome" && <OutcomeOptions />}
+			{props.tab1 === "Outcome" && (
+				<OutcomeOptions
+					outcomeView={props.outcomeView}
+					updateOutcomeView={props.updateOutcomeView}
+				/>
+			)}
 			{props.children}
 		</div>
 	);
