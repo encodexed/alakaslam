@@ -31,6 +31,12 @@ function preloadImages(array) {
 }
 
 export default function Content(props) {
+	// Holds the search term to be used to filter effects list
+	const [effectsFilter, setEffectsFilter] = useState("");
+	// Holds the search term to be used to filter ingredients list
+	const [ingredientsFilter, setIngredientsFilter] = useState("");
+	// Holds the search term to be used to filter combination results
+	const [combinationsFilter, setCombinationsFilter] = useState("");
 	// When first loading the page, display a loading symbol and pre-cache the images.
 	const [isPreloadingImages, setIsPreloadingImages] = useState(true);
 	// Controls which mode is being viewed, selected by clicking on tabs.
@@ -57,6 +63,8 @@ export default function Content(props) {
 		conflicts: [],
 	});
 
+	// Effects
+
 	useEffect(() => {
 		preloadImages(Images);
 		setIsPreloadingImages(false);
@@ -80,6 +88,20 @@ export default function Content(props) {
 			});
 		}
 	}, [selectionMode, userIngredientSelections, userEffectSelections]);
+
+	// Handlers
+
+	const updateEffectsFilter = (str) => {
+		setEffectsFilter(str);
+	};
+
+	const updateIngredientsFilter = (str) => {
+		setIngredientsFilter(str);
+	}; 
+
+	const updateCombinationsFilter = (str) => {
+		setCombinationsFilter(str);
+	};
 
 	const selectEffect = (id) => {
 		if (userEffectSelections.length < 3) {
@@ -166,6 +188,7 @@ export default function Content(props) {
 					strictMode={strictMode}
 					toggleStrictMode={toggleStrictModeHandler}
 					isViewingOutcome={isViewingOutcome}
+					updateCombinationsFilter={updateCombinationsFilter}
 				>
 					{isPreloadingImages && <Loading />}
 					{!isPreloadingImages && isViewingOutcome && (
@@ -175,6 +198,7 @@ export default function Content(props) {
 						<Combinations
 							selectedIDs={userEffectSelections}
 							strictMode={strictMode}
+							filter={combinationsFilter}
 						/>
 					)}
 				</SectionCard>
@@ -188,6 +212,8 @@ export default function Content(props) {
 				renderInfo={sectionsShown}
 				renderControl={adjustSectionsShown}
 				selectionMode={selectionMode}
+				updateEffectsFilter={updateEffectsFilter}
+				updateIngredientsFilter={updateIngredientsFilter}
 			>
 				{isPreloadingImages && <Loading />}
 				{!isPreloadingImages && selectionMode === "ingredients" && (
@@ -197,6 +223,7 @@ export default function Content(props) {
 						selectOne={selectIngredient}
 						deselectOne={deselectIngredient}
 						disableAddButtons={disableAddIngredients}
+						filter={ingredientsFilter}
 					/>
 				)}
 				{!isPreloadingImages && selectionMode === "effects" && (
@@ -205,6 +232,7 @@ export default function Content(props) {
 						selectOne={selectEffect}
 						deselectOne={deselectEffect}
 						disableAddButtons={disableAddEffects}
+						filter={effectsFilter}
 					/>
 				)}
 			</SectionCard>

@@ -4,17 +4,14 @@ export default function Toggle(props) {
    const toggleStrictMode = () => {
 		props.toggleStrictMode();
 	};
-   
-   const textIndicator = props.strictMode ? "ON" : "OFF";
 
 	return (
       <>
-         {textIndicator}
 			<Switch
 				checked={props.strictMode}
 				onChange={toggleStrictMode}
 				className={`${
-					props.strictMode ? "bg-red-600" : "bg-green-600"
+					props.strictMode ? "bg-red-600" : "bg-slate-600 opacity-20"
 				} relative inline-flex h-5 ml-1 w-10 items-center rounded-full`}
 			>
 				<span

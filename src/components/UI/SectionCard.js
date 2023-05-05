@@ -2,6 +2,8 @@ import { useState } from "react";
 import SectionTabs from "./SectionTabs";
 import CombinationsOptions from "../Options/CombinationsOptions";
 import ChooseIngredientsOptions from "../Options/ChooseIngredientsOptions";
+import ChooseEffectsOptions from "../Options/ChooseEffectsOptions";
+import OutcomeOptions from "../Options/OutcomeOptions";
 
 export default function SectionCard(props) {
 	const [isSectionShown, setIsSectionShown] = useState(true);
@@ -39,24 +41,27 @@ export default function SectionCard(props) {
 			/>
 			{props.tab1 === "Choose Ingredients" &&
 				props.selectionMode === "effects" && (
-					<ChooseIngredientsOptions />
+					<ChooseEffectsOptions
+						updateEffectsFilter={props.updateEffectsFilter}
+					/>
+				)}
+			{props.tab1 === "Choose Ingredients" &&
+				props.selectionMode === "ingredients" && (
+					<ChooseIngredientsOptions
+						updateIngredientsFilter={props.updateIngredientsFilter}
+					/>
 				)}
 			{props.tab1 === "Combinations" && !props.isViewingOutcome && (
 				<CombinationsOptions
 					toggleStrictMode={props.toggleStrictMode}
 					strictMode={props.strictMode}
+					updateCombinationsFilter={props.updateCombinationsFilter}
 				/>
 			)}
-			{/* {props.tab1 === "Combinations" && props.isViewingOutcome && (
-				<div className='border-b-2 border-black h-7'>
-					Viewing Effects Outcome
-				</div>
+			{props.tab1 === "Combinations" && props.isViewingOutcome && (
+				<OutcomeOptions />
 			)}
-			{props.tab1 === "Outcome" && (
-				<div className='border-b-2 border-black h-7'>
-					Viewing Ingredients Outcome
-				</div>
-			)} */}
+			{props.tab1 === "Outcome" && <OutcomeOptions />}
 			{props.children}
 		</div>
 	);

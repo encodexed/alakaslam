@@ -1,35 +1,27 @@
 import EffectsData from "../../EffectsData";
-import AddButton from "../UI/AddButton";
-import DisabledAddButton from "../UI/DisabledAddButton";
-import Icon from "../UI/Icon";
+import UnfilteredEffect from "./UnfilteredEffect";
 
 export default function Effect(props) {
 	const effect = EffectsData[props.id];
-	const { id, name, src, summary } = effect;
+	const { name, summary } = effect;
 
-	const selectEffect = () => {
-		props.selectEffect(id);
-	};
+	if (!props.filter) {
+		return (
+			<UnfilteredEffect id={props.id} selectEffect={props.selectEffect} />
+		);
+	} else {
+		let filterThisEffect = true;
+		let allContent = (name + "," + summary).toLowerCase();
+		if (allContent.search(props.filter.toLowerCase()) >= 0) {
+			filterThisEffect = false;
+		}
 
-	return (
-		<div className='flex border-b'>
-			<div>
-				<Icon src={src} />
-			</div>
-			<div className='flex-1 w-40 my-auto justify-content-center'>
-				<h3 className='text-sm text-center sm:text-base'>{name}</h3>
-			</div>
-			<div className='my-auto flex-0'>
-				{!props.isDisabled && (
-					<AddButton onClick={selectEffect} />
-				)}
-				{props.isDisabled && <DisabledAddButton />}
-			</div>
-			<div className='flex-1 mx-2 my-auto'>
-				<p className='text-xs leading-none text-center sm:leading-none sm:text-sm text-slate-500'>
-					{summary}
-				</p>
-			</div>
-		</div>
-	);
+		if (!filterThisEffect) {
+			return (
+				<UnfilteredEffect id={props.id} selectEffect={props.selectEffect} />
+			);
+		} else {
+			return <></>;
+		}
+	}
 }

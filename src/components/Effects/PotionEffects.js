@@ -42,6 +42,7 @@ export default function PotionEffects(props) {
 							id={effect.id}
 							selectEffect={props.selectOne}
 							isDisabled={props.disableAddButtons}
+							filter={props.filter}
 						/>
 					);
 				}

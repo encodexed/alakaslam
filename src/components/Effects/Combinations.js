@@ -68,6 +68,7 @@ export default function Combinations(props) {
 							key={thisKey}
 							thisKey={thisKey}
 							ingredients={combination}
+							filter={props.filter}
 						/>
 					);
 				})}
