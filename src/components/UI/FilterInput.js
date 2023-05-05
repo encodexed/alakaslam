@@ -36,18 +36,35 @@ export default function FilterInput(props) {
 		: `hidden`;
 
 	return (
-		<div className='flex-1 pl-2'>
-			<input
-				ref={searchTermRef}
-				type='text'
-				onChange={updateSearchTerm}
-				value={searchTerm}
-				className='h-6 p-1 ml-1 border rounded-lg'
-				placeholder='Filter'
-			/>
-			<button onClick={clearSearchTerm} className={clearFilterStyle}>
-				Clear Filter
-			</button>
-		</div>
+		<>
+			{/* Output on small-large screens */}
+			<div className='flex-1 hidden pl-2 xxs:block'>
+				<input
+					ref={searchTermRef}
+					type='text'
+					onChange={updateSearchTerm}
+					value={searchTerm}
+					className='h-6 p-1 border rounded-lg'
+					placeholder='Filter'
+				/>
+				<button onClick={clearSearchTerm} className={clearFilterStyle}>
+					Clear Filter
+				</button>
+			</div>
+			{/* Output on extra-small screens */}
+			<div className='flex-1 block pl-2 text-sm xxs:hidden'>
+				<input
+					ref={searchTermRef}
+					type='text'
+					onChange={updateSearchTerm}
+					value={searchTerm}
+					className='w-24 h-6 p-1 border rounded-lg'
+					placeholder='Filter'
+				/>
+				<button onClick={clearSearchTerm} className={clearFilterStyle}>
+					Clear
+				</button>
+			</div>
+		</>
 	);
 }
