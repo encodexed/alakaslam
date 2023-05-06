@@ -5,11 +5,6 @@ export default function FilterInput(props) {
 	const [searchTerm, setSearchTerm] = useState("");
 
 	useEffect(() => {
-		// If 'Clear Filter' button is clicked or no input is detected, immediately show all results again.
-		if (searchTerm === "") {
-			props.updateFilter(searchTerm);
-		}
-
 		// Delays filter so it doesn't apply on each keystroke
 		const typingTimer = setTimeout(() => {
 			props.updateFilter(searchTerm);
@@ -27,6 +22,7 @@ export default function FilterInput(props) {
 
 	const clearSearchTerm = (e) => {
 		setSearchTerm("");
+		props.updateFilter("");
 		searchTermRef.current.focus();
 	};
 
@@ -38,21 +34,21 @@ export default function FilterInput(props) {
 	return (
 		<>
 			{/* Output on small-large screens */}
-			<div className='flex-1 hidden pl-2 xxs:block'>
+			<div className='hidden pl-2 xxs:block'>
 				<input
 					ref={searchTermRef}
 					type='text'
 					onChange={updateSearchTerm}
 					value={searchTerm}
-					className='h-6 p-1 border rounded-lg'
+					className='w-40 h-6 p-1 border rounded-lg'
 					placeholder='Filter'
 				/>
 				<button onClick={clearSearchTerm} className={clearFilterStyle}>
-					Clear Filter
+					Clear
 				</button>
 			</div>
 			{/* Output on extra-small screens */}
-			<div className='flex-1 block pl-2 text-sm xxs:hidden'>
+			<div className='block pl-2 text-sm xxs:hidden'>
 				<input
 					ref={searchTermRef}
 					type='text'
