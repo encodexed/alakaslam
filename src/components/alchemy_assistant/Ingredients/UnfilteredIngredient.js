@@ -1,7 +1,7 @@
 import AddButton from "../UI/AddButton";
 import Icon from "../UI/Icon";
 import DisabledAddButton from "../UI/DisabledAddButton";
-import IngredientsData from "@/IngredientsData";
+import IngredientsData from "@/app_data/IngredientsData";
 import { useState, useEffect } from 'react';
 import removeDuplicates from "@/functions/removeDuplicates";
 

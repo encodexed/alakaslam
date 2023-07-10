@@ -7,7 +7,7 @@ import IngredientResults from "./Ingredients/IngredientResults";
 import getMatchesAndConflicts from "@/functions/getMatchesAndConflicts";
 import EffectsResults from "./Effects/EffectsResults";
 import Combinations from "./Effects/Combinations";
-import Images from "../Images";
+import Images from "../../app_data/Images";
 import Loading from "./Loading";
 
 function preloadImages(array) {

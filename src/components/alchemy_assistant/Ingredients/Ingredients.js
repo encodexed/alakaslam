@@ -1,5 +1,5 @@
 import Ingredient from "./Ingredient";
-import IngredientsData from "../../IngredientsData";
+import IngredientsData from "../../../app_data/IngredientsData";
 import SelectedIngredients from "./SelectedIngredients";
 import { useState, useEffect } from "react";
 import getCompatible from "@/functions/getCompatible";

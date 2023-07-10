@@ -1,7 +1,7 @@
 // Given an array of desired effects, returns an array of arrays of possible combinations of ingredients to achieve those effects.
 // An extra parameter strictMode will help allow or disallow extra side effects that could be unwanted.
-import EffectsData from "@/EffectsData";
-import IngredientsData from "@/IngredientsData";
+import EffectsData from "@/app_data/EffectsData";
+import IngredientsData from "@/app_data/IngredientsData";
 import getOccurrences from "./getOccurrences";
 import filterSideEffects from "./filterSideEffects";
 

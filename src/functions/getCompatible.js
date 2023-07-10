@@ -1,6 +1,6 @@
 // Returns an array of ingredients/effects' IDs that are compatible with user selected ingredients/effects, accepted as an array in parameters
-import IngredientsData from "@/IngredientsData";
-import EffectsData from "@/EffectsData";
+import IngredientsData from "@/app_data/IngredientsData";
+import EffectsData from "@/app_data/EffectsData";
 import getEffects from "./getEffects";
 import removeDuplicates from "./removeDuplicates";
 

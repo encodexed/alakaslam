@@ -1,5 +1,5 @@
 // Takes an array of effects names, specified in parameters, and returns that IDs
-import EffectsData from "@/EffectsData";
+import EffectsData from "@/app_data/EffectsData";
 
 export default function getIDsFromNames(array) {
 	let returnIDs = [];

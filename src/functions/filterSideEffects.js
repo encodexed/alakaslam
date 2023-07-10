@@ -1,6 +1,6 @@
 // Takes an array of desired effects and an array of ingredient combinations (as arrays) and returns only combinations that combine to create the desired effects.
 import removeDuplicates from "./removeDuplicates";
-import IngredientsData from "@/IngredientsData";
+import IngredientsData from "@/app_data/IngredientsData";
 import getIDsFromNames from "./getIDsFromNames";
 
 export default function filterSideEffects(desiredEffects, combinations) {

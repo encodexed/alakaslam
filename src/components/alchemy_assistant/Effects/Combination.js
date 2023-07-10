@@ -1,4 +1,4 @@
-import IngredientsData from "@/IngredientsData";
+import IngredientsData from "@/app_data/IngredientsData";
 import UnfilteredCombination from "./UnfilteredCombination";
 
 export default function Combination(props) {

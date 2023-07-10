@@ -1,4 +1,4 @@
-import IngredientsData from "../../IngredientsData";
+import IngredientsData from "../../../app_data/IngredientsData";
 import UnfilteredIngredient from "./UnfilteredIngredient";
 
 export default function Ingredient(props) {

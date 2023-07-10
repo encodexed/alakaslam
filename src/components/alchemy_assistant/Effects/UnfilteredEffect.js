@@ -1,7 +1,7 @@
 import AddButton from "../UI/AddButton";
 import DisabledAddButton from "../UI/DisabledAddButton";
 import Icon from "../UI/Icon";
-import EffectsData from "@/EffectsData";
+import EffectsData from "@/app_data/EffectsData";
 
 export default function UnfilteredEffect(props) {
    const effect = EffectsData[props.id];

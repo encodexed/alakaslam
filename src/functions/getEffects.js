@@ -1,5 +1,5 @@
 // Returns an array of effects names that an array of ingredients IDs possesses, without filtering duplicates.
-import IngredientsData from "@/IngredientsData";
+import IngredientsData from "@/app_data/IngredientsData";
 
 export default function getEffects(ingredientsIDs) {
    let allEffects = [];

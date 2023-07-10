@@ -1,5 +1,5 @@
 import SelectedEffects from "./SelectedEffects";
-import EffectsData from "../../EffectsData";
+import EffectsData from "../../../app_data/EffectsData";
 import Effect from "./Effect";
 import { useState, useEffect } from "react";
 import getCompatible from "@/functions/getCompatible";

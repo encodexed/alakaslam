@@ -1,6 +1,6 @@
 import RemoveButton from "../UI/RemoveButton";
 import Icon from "../UI/Icon";
-import IngredientsData from "@/IngredientsData";
+import IngredientsData from "@/app_data/IngredientsData";
 import { useState, useEffect } from "react";
 import getIDsFromNames from "@/functions/getIDsFromNames";
 

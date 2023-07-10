@@ -1,4 +1,4 @@
-import EffectsData from "../../EffectsData";
+import EffectsData from "../../../app_data/EffectsData";
 import UnfilteredEffect from "./UnfilteredEffect";
 
 export default function Effect(props) {

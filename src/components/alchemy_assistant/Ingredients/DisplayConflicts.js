@@ -1,4 +1,4 @@
-import EffectsData from "../../EffectsData";
+import EffectsData from "../../../app_data/EffectsData";
 
 export default function DisplayConflicts(props) {
 	return (

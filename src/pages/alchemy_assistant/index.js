@@ -1,5 +1,5 @@
-import Content from "@/components/Content";
-import Info from "@/components/Info";
+import Content from "@/components/alchemy_assistant/Content";
+import Info from "@/components/alchemy_assistant/Info";
 import { useState } from "react";
 
 export default function Home() {

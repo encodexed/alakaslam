@@ -1,5 +1,5 @@
 // Given an array of effects that have been matched, return an array of two strings, reflecting the most likely name used based on the hierarchy stat of each effect.
-import EffectsData from "@/EffectsData";
+import EffectsData from "@/app_data/EffectsData";
 
 export default function getConcoctionName(effects) {
 	// If React is still updating state

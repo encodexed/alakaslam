@@ -1,6 +1,6 @@
 // Given an effect ID, this function will return an array of arrays of possible combinations of ingredients to achieve that effect.
 // An extra parameter strictMode will help allow or disallow extra side effects that could be unwanted.
-import EffectsData from "@/EffectsData";
+import EffectsData from "@/app_data/EffectsData";
 import filterSideEffects from "./filterSideEffects";
 
 // Filtering out counter-effects will not be necessary for one-effect concoctions with two ingredients :)

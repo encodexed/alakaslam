@@ -1,6 +1,6 @@
 import Icon from "../UI/Icon";
 import RemoveButton from "../UI/RemoveButton";
-import EffectsData from "@/EffectsData";
+import EffectsData from "@/app_data/EffectsData";
 
 export default function SelectedEffect(props) {
    const effect = EffectsData[props.effectID];

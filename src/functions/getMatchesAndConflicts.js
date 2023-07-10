@@ -1,6 +1,6 @@
 // Given an array of ingredients IDs, will return an object with three arrays: triple matches, double matches and conflicts objects.
 import getEffects from "./getEffects";
-import EffectsData from "@/EffectsData";
+import EffectsData from "@/app_data/EffectsData";
 import getIDsFromNames from "./getIDsFromNames";
 import removeDuplicates from "./removeDuplicates";
 import getOccurrences from "./getOccurrences";

@@ -1,5 +1,5 @@
 import Icon from "../UI/Icon";
-import IngredientsData from "../../IngredientsData";
+import IngredientsData from "../../../app_data/IngredientsData";
 
 export default function Ingredient(props) {
 	if (props.id === -1) {

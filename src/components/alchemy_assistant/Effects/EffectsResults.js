@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import NoInput from "../NoInput";
 import Image from "next/image";
 import getConcoctionName from "@/functions/getConcoctionName";
-import potionImage from "../../../public/images/potions/Increase_Armor.png";
-import poisonImage from "../../../public/images/poisons/Red_Poison.png";
 
 export default function EffectsResults(props) {
 	const [potionName, setPotionName] = useState("");
